@@ -4,6 +4,7 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
@@ -20,6 +21,7 @@ public class RootConfig {
     public SqlSessionFactory sqlSessionFactory() throws Exception{
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource());
+
         return sqlSessionFactoryBean.getObject();
     }
     @Bean
@@ -28,9 +30,12 @@ public class RootConfig {
 
         config.setDriverClassName("net.sf.log4jdbc.sql.jdbcapi.DriverSpy");
 
-        config.setJdbcUrl("jdbc:log4jdbc:mysql://106.241.252.51/delinori");
-        config.setUsername("delinori");
-        config.setPassword("delinoripw");
+//        config.setJdbcUrl("jdbc:log4jdbc:mysql://106.241.252.51/delinori");
+//        config.setUsername("delinori");
+//        config.setPassword("delinoripw");
+        config.setJdbcUrl("jdbc:log4jdbc:mysql://localhost:3306/springdb");
+        config.setUsername("springuser");
+        config.setPassword("springuser");
         HikariDataSource dataSource = new HikariDataSource(config);
         return dataSource;
     }

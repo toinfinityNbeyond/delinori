@@ -3,6 +3,7 @@ package com.noriteo.delinori.notice.controller;
 import com.noriteo.delinori.notice.dto.NoticeDTO;
 import com.noriteo.delinori.notice.service.NoticeService;
 import com.noriteo.delinori.notice.service.TimeService;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
@@ -36,6 +37,12 @@ public class NoticeController {
         Long nno = noticeService.register(noticeDTO);
 
         return "redirect:/noriteo/list";
+
+    }
+
+
+    @GetMapping("/list")
+    public void getList(){
 
     }
 

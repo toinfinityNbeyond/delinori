@@ -1,7 +1,9 @@
 package com.noriteo.delinori.common.config;
 
 import com.noriteo.delinori.common.converter.StringToLocalDateTimeConverter;
+import com.noriteo.delinori.notice.config.NoticeServletConfig;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Import;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -12,7 +14,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 @EnableWebMvc
-@ComponentScan(basePackages = "com.noriteo.delinori.common.exception")
+@ComponentScan(basePackages = {"com.noriteo.delinori.common.exception", "com.noriteo.delinori.notice.controller"})
+@Import(NoticeServletConfig.class)
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class ServletConfig implements WebMvcConfigurer {
 

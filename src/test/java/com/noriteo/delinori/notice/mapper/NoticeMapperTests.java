@@ -2,7 +2,7 @@ package com.noriteo.delinori.notice.mapper;
 
 import com.noriteo.delinori.common.config.RootConfig;
 import com.noriteo.delinori.notice.config.NoticeRootConfig;
-import com.noriteo.delinori.notice.domain.Board;
+import com.noriteo.delinori.notice.domain.Notice;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,7 +25,7 @@ public class NoticeMapperTests {
 
         IntStream.rangeClosed(1,100).forEach( i -> {
             //Long nno = null;
-            Board board = Board.builder()
+            Notice board = Notice.builder()
                    // .nno(nno + i)
                     .title("title" + i)
                     .writer("user" + (i % 10))

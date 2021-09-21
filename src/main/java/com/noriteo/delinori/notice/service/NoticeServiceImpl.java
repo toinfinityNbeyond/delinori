@@ -1,6 +1,6 @@
 package com.noriteo.delinori.notice.service;
 
-import com.noriteo.delinori.notice.domain.Board;
+import com.noriteo.delinori.notice.domain.Notice;
 import com.noriteo.delinori.notice.dto.NoticeDTO;
 import com.noriteo.delinori.notice.mapper.NoticeMapper;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +16,7 @@ public class NoticeServiceImpl implements NoticeService {
 
     @Override
     public Long register(NoticeDTO noticeDTO) {
-        Board board = noticeDTO.getDomain();
+        Notice board = noticeDTO.getDomain();
 
         noticeMapper.insert(board);
 

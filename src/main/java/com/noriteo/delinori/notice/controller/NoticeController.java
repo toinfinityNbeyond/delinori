@@ -19,9 +19,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 public class NoticeController {
 
+
     private final TimeService timeService;
 
-    private final NoticeService noticeService;
+    //private final NoticeService noticeService;
 
     @GetMapping("/time")
     public void getTime(Model model){
@@ -29,16 +30,16 @@ public class NoticeController {
         model.addAttribute("time", timeService.getNow());
     }
 
-    @PostMapping("/register")
-    public String registerPost(NoticeDTO noticeDTO){
-
-        log.info("noticeDTOM      "   + noticeDTO);
-
-        Long nno = noticeService.register(noticeDTO);
-
-        return "redirect:/noriteo/list";
-
-    }
+//    @PostMapping("/register")
+//    public String registerPost(NoticeDTO noticeDTO){
+//
+//        log.info("noticeDTOM      "   + noticeDTO);
+//
+//        Long nno = noticeService.register(noticeDTO);
+//
+//        return "redirect:/noriteo/list";
+//
+//    }
 
 
     @GetMapping("/list")

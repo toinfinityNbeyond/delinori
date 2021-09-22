@@ -9,12 +9,14 @@ import com.noriteo.delinori.notice.service.TimeService;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/notice/*")
@@ -33,7 +35,28 @@ public class NoticeController {
         model.addAttribute("time", timeService.getNow());
     }
 
+   // @PreAuthorize("isAuthenticated()")
+    @GetMapping("/register")
+    public void registerGet(){ //항상 똑같은 페이지  -> void
+        //자동으로 해당하는 jsp로 감
+    }
 
+    @PostMapping("/register")
+    public String registerPost(NoticeDTO noticeDTO, RedirectAttributes redirectAttributes){ // 리다이렉트 하려고 String사용
+
+        log.info("noticeDTOM           " + noticeDTO);
+
+        //Long bno = 111L;
+        //Long bno = boardService.register(boardDTO);
+        Long nno = noticeService.register(noticeDTO);
+
+        log.info("==================c              registerPost=========================");
+        log.info(nno);
+        redirectAttributes.addFlashAttribute("result",nno); //addFlashAttribute ->일회성으로 처리. 뒤로가기 누르면 주소값(bno)이 나와서.
+        //알림창 나오게 값을 받는거라서 한 번만 사용-> 일회성
+
+        return "redirect:/board/list"; // 리다이렉트 했을 때 새롭게 생성한 bno번호를보고 싶음 -> mybatis설정
+    }
 
     @GetMapping("/list")
     public void getList(PageRequestDTO pageRequestDTO, Model model){
@@ -54,6 +77,19 @@ public class NoticeController {
 
         //model.addAttribute("pageMaker", new PageMaker(pageRequestDTO.getPage();,size,total));  이런식으로 줄이는것도 가능
     }  // 페이지와 사이즈를 파라미터로 던진다.
+
+    @PostMapping("/remove")
+    public String remove(Long nno, RedirectAttributes redirectAttributes) { // RedirectAttributes -> 값을 자동으로 전달해주는 타입(역할) response.Sendredirect 의 역할  -> 리턴으로 감.
+        log.info("c       remove:" + nno);
+
+        if (noticeService.remove(nno)) {
+            log.info("remove success");
+            redirectAttributes.addFlashAttribute("result", "success");  //모달
+            //jsp가 없기 때문에 개발자 도구 콘솔창으로 확인시 키 값만 나온다. -> 확인을 위해서 사용.
+        }
+        return "redirect:/board/list";  //삭제를 하고 모달창이 떠야함.
+
+    }
 
 }
 

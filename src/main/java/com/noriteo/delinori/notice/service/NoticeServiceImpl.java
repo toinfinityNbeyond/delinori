@@ -32,14 +32,17 @@ public class NoticeServiceImpl implements NoticeService {
     public PageResponseDTO<NoticeDTO> getDTOList(PageRequestDTO pageRequestDTO) {
 
         List<NoticeDTO> dtoList = noticeMapper.getList(pageRequestDTO).stream().map(notice -> notice.getDTO()).collect(Collectors.toList());
-        //int count = noticeMapper.getCount(pageRequestDTO);
+        int count = noticeMapper.getCount(pageRequestDTO);
 
         PageResponseDTO <NoticeDTO> pageResponseDTO = PageResponseDTO.<NoticeDTO>builder()
                 .dtoList(dtoList)
-               // .count(count)
+                .count(count)
                 .build();
 
 
         return pageResponseDTO;
     }
+
+    @Override
+    public boolean remove(Long nno) {return noticeMapper.delete(nno) > 0;}
 }

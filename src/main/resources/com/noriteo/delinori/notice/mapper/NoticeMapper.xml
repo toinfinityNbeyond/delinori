@@ -18,5 +18,12 @@
         order by nno desc limit #{skip},#{size}   <!--계속 해서 바뀐 값을 넣기위해 #{} 으로 감싸줌-->
     </select>
 
+
+    <select id="getCount" resultType="int">
+        select count(nno) from tbl_notice
+
+<!--        <include refid="search"></include>-->
+    </select>
+
 </mapper>
 

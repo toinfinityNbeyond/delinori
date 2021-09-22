@@ -59,11 +59,11 @@ public class NoticeMapperTests {
 
         List<NoticeDTO> noticeDTOList = noticeMapper.getList(pageRequestDTO).stream().map(notice -> notice.getDTO()).collect(Collectors.toList());
 
-      //  int count = noticeMapper.getCount(pageRequestDTO);
+        int count = noticeMapper.getCount(pageRequestDTO);
 
         PageResponseDTO<NoticeDTO> pageResponseDTO = PageResponseDTO.<NoticeDTO>builder()
                 .dtoList(noticeDTOList)
-      //          .count(count)
+                .count(count)
                 .build();
 
     }

@@ -45,8 +45,10 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 class="h3 mb-2 text-gray-800">공지</h1>
-                <p class="mb-4"> 딜리노리 공지사항 >_0 </p>
+                <p class="mb-4"> 딜리노리 공지사항 </p>
+                </div>
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">

@@ -9,4 +9,6 @@ public interface NoticeService {
     Long register(NoticeDTO noticeDTO);
 
     PageResponseDTO<NoticeDTO> getDTOList(PageRequestDTO pageRequestDTO);
+
+    boolean remove(Long nno);
 }

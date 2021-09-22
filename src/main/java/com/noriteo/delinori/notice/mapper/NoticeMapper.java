@@ -13,6 +13,8 @@ public interface NoticeMapper {
 
     List<Notice> getList(PageRequestDTO pageRequestDTO);
 
-    //int getCount(PageRequestDTO pageRequestDTO);
+    int getCount(PageRequestDTO pageRequestDTO);
+
+    int delete(Long nno);
 
 }

@@ -68,4 +68,13 @@ public class NoticeMapperTests {
 
     }
 
+    @Test
+    public void testDelete() {
+        long nno = 207L;
+
+        log.info("delete...........");
+        log.info(noticeMapper.delete(nno));
+    }
+
+
 }

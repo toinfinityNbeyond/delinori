@@ -9,4 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 public interface TimeService {
 
     String getNow();
+
+    void addString(String str);
 }

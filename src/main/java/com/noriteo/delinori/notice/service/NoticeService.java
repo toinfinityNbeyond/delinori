@@ -10,5 +10,7 @@ public interface NoticeService {
 
     PageResponseDTO<NoticeDTO> getDTOList(PageRequestDTO pageRequestDTO);
 
+    NoticeDTO read(Long nno);
+
     boolean remove(Long nno);
 }

@@ -55,7 +55,7 @@ public class NoticeController {
         redirectAttributes.addFlashAttribute("result",nno); //addFlashAttribute ->일회성으로 처리. 뒤로가기 누르면 주소값(bno)이 나와서.
         //알림창 나오게 값을 받는거라서 한 번만 사용-> 일회성
 
-        return "redirect:/board/list"; // 리다이렉트 했을 때 새롭게 생성한 bno번호를보고 싶음 -> mybatis설정
+        return "redirect:/notice/list"; // 리다이렉트 했을 때 새롭게 생성한 bno번호를보고 싶음 -> mybatis설정
     }
 
     @GetMapping("/list")
@@ -78,16 +78,36 @@ public class NoticeController {
         //model.addAttribute("pageMaker", new PageMaker(pageRequestDTO.getPage();,size,total));  이런식으로 줄이는것도 가능
     }  // 페이지와 사이즈를 파라미터로 던진다.
 
+
+    @GetMapping(value = {"/read","/modify", "/read2"})
+    public void read(Long nno, PageRequestDTO pageRequestDTO,Model model) {  //자동으로 모델에 전달. PageRequestDTO를 파라미터로 사용하지 않으면 개별 값을 다 파라미터로 선언해야함;;
+        log.info("c   read" +  nno );
+        log.info("c   read" + pageRequestDTO);
+
+
+        model.addAttribute("noticeDTO", noticeService.read(nno)); // model 파라미터 자체가 다른 값 을 감싸서 전달. 파라미터 자체가 값을 가공해서 전달.
+
+
+    }
+
+
+
+
+
     @PostMapping("/remove")
     public String remove(Long nno, RedirectAttributes redirectAttributes) { // RedirectAttributes -> 값을 자동으로 전달해주는 타입(역할) response.Sendredirect 의 역할  -> 리턴으로 감.
         log.info("c       remove:" + nno);
 
-        if (noticeService.remove(nno)) {
-            log.info("remove success");
-            redirectAttributes.addFlashAttribute("result", "success");  //모달
-            //jsp가 없기 때문에 개발자 도구 콘솔창으로 확인시 키 값만 나온다. -> 확인을 위해서 사용.
-        }
-        return "redirect:/board/list";  //삭제를 하고 모달창이 떠야함.
+        noticeService.remove(nno);
+
+        log.info("성공");
+
+//        공f (noticeService.remove(nno)) {
+//            log.info("remove success");
+//            redirectAttributes.addFlashAttribute("result", "success");  //모달
+//            //jsp가 없기 때문에 개발자 도구 콘솔창으로 확인시 키 값만 나온다. -> 확인을 위해서 사용.
+//        }
+        return "redirect:/notice/list";  //삭제를 하고 모달창이 떠야함.
 
     }
 

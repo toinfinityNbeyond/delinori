@@ -44,5 +44,16 @@ public class NoticeServiceImpl implements NoticeService {
     }
 
     @Override
+    public NoticeDTO read(Long nno) {
+        Notice notice = noticeMapper.select(nno);
+
+        if (notice != null) {
+            return notice.getDTO();
+        }
+        // return board != null? board.getDTO(): null; //if 문을 삼항연산자로 변경
+        return null;
+    }
+
+    @Override
     public boolean remove(Long nno) {return noticeMapper.delete(nno) > 0;}
 }

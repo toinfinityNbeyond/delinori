@@ -1,11 +1,9 @@
 package com.noriteo.delinori.notice.domain;
 
-import com.noriteo.delinori.common.dto.UploadResponseDTO;
+import com.noriteo.delinori.notice.dto.UploadResponseDTO;
 import com.noriteo.delinori.notice.dto.NoticeDTO;
 import lombok.*;
-import org.springframework.web.bind.annotation.GetMapping;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +29,7 @@ public class Notice {
                 .title(title)
                 .content(content)
                 .writer(writer)
-                .redDate(regDate)
+                .regDate(regDate)
                 .modDate(modDate)
                 .build();
 

@@ -1,5 +1,6 @@
 package com.noriteo.delinori.notice.mapper;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
@@ -10,4 +11,7 @@ public interface TimeMapper {
     String getTime();
 
     String getTime2();
+
+
+    //void insertE1(String str);
 }

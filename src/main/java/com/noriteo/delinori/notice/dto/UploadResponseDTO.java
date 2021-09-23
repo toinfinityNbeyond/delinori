@@ -1,4 +1,4 @@
-package com.noriteo.delinori.common.dto;
+package com.noriteo.delinori.notice.dto;
 
 
 import lombok.AllArgsConstructor;

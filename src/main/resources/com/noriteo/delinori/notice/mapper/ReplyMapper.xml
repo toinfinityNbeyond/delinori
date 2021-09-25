@@ -11,8 +11,8 @@
     </insert>
 
 
-    <select id="getListWithBoard" resultType="com.noriteo.delinori.notice.domain.Reply">
-        select * from reply_notice where nno = #{nno]} order by rno asc
+    <select id="getListWithNotice" resultType="com.noriteo.delinori.notice.domain.Reply">
+        select * from reply_notice where nno = #{nno} order by rno asc
     </select>
 
     <delete id="delete">

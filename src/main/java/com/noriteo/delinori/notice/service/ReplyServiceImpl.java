@@ -30,8 +30,8 @@ public class ReplyServiceImpl implements ReplyService {
 
 
     @Override
-    public List<ReplyDTO> getRepliesWithBno(long nno) {
-        return replyMapper.getListWithBoard(nno).stream()
+    public List<ReplyDTO> getRepliesWithNno(long nno) {
+        return replyMapper.getListWithNotice(nno).stream()
                 .map(reply -> entityToDTO(reply)).collect(Collectors.toList());
     }
 

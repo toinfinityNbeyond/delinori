@@ -8,13 +8,14 @@ import java.util.List;
 public interface ReplyService {
 
     int add(ReplyDTO replyDTO);
-    List<ReplyDTO> getRepliesWithBno(long bno);
+
+    List<ReplyDTO> getRepliesWithNno(long nno);
 
     int remove(long rno);
 
     int modify(ReplyDTO replyDTO);
 
-    default Reply dtoToEntity (ReplyDTO dto) { //DTO -> NTT
+    default Reply dtoToEntity (ReplyDTO dto) { //DTO -> Entity
         Reply reply = Reply.builder()
                 .rno(dto.getRno())
                 .nno(dto.getNno())

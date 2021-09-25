@@ -39,59 +39,80 @@
             </div>
         </div>
 
-
         <div class="card-footer float-right">
             <button type="button" class="btn btn-default btnList"> LIST </button>
             <button type="button" class="btn btn-default btnDel"> Delete </button>
-
         </div>
         </form>
 
         <!--파일이 있는지 확인하고 read에서 첨부파일 조회하는 코드-->
+<%--        <div>--%>
+<%--            <c:forEach items="${noticeDTO.files}" var="attach">--%>
+<%--                <div>--%>
+<%--                    <!--첨부파일 링크를 보여주는 곳-->--%>
+<%--                    <c:if test="${attach.image}">--%>
+<%--                        <img onclick="javascript:showOrigin('${attach.getFileLink()}')" src="/viewFile?file=${attach.getThumbnail()}">    <!--attach.getFileLink()이 파라미터로 들어간다.-->--%>
+<%--                    </c:if>--%>
+<%--                        ${attach.fileName}--%>
+<%--                </div>--%>
+<%--            </c:forEach>--%>
+<%--        </div>--%>
         <div>
-            <c:forEach items="${noticeDTO.files}" var="attach">
-                <div>
-                    <!--첨부파일 링크를 보여주는 곳-->
-                    <c:if test="${attach.image}">
-                        <img onclick="javascript:showOrigin('${attach.getFileLink()}')" src="/viewFile?file=${attach.getThumbnail()}">    <!--attach.getFileLink()이 파라미터로 들어간다.-->
-                    </c:if>
-                        ${attach.fileName}
-                </div>
-            </c:forEach>
+            <form action="/notice/list" method="get">
+                <input type="hidden" name="page" value="1"> <!--검색 시 결과가 1페이지부터 나오게 하려고 value값을 1 로 줬다.-->
+                <input type="hidden" name="size" value="${pageMaker.size}">
+            </form>  <!--버튼이 폼안에 있어야 작동을 해서 폼으로 감싸줬다.-->
         </div>
+    </div>
 
-        </tbody>
-                    </table>
+    <div>
+        <!-- /.card -->
+        <div class="card direct-chat direct-chat-primary">
+<%--            <div class="card-header">--%>
+                <h3 class="card-title">Replies</h3>
 
-                    <form action="/notice/list" method="get">
-                        <input type="hidden" name="page" value="1"> <!--검색 시 결과가 1페이지부터 나오게 하려고 value값을 1 로 줬다.-->
-                        <input type="hidden" name="size" value="${pageMaker.size}">
+<%--                <div class="card-tools">--%>
+<%--                    <span title="3 New Messages" class="badge badge-primary addReplyBtn">Add Reply</span>--%>
+<%--                    <button type="button" class="btn btn-tool" data-card-widget="collapse">--%>
+<%--                        <i class="fas fa-minus"></i>--%>
+<%--                    </button>--%>
+<%--                    <button type="button" class="btn btn-tool" title="Contacts" data-widget="chat-pane-toggle">--%>
+<%--                        <i class="fas fa-comments"></i>--%>
+<%--                    </button>--%>
+<%--                    <button type="button" class="btn btn-tool" data-card-widget="remove">--%>
+<%--                        <i class="fas fa-times"></i>--%>
+<%--                    </button>--%>
+<%--                </div>--%>
 
-                    </form>  <!--버튼이 폼안에 있어야 작동을 해서 폼으로 감싸줬다.-->
+                <div class="card-body">
+                    <!-- Conversations are loaded here -->
+                    <div class="direct-chat-messages">
+                    </div>
+                    <!--/.direct-chat-messages-->
                 </div>
+        </div>
+            <!-- /.card-header -->
+
+    </div>
 
 
+        <div class="card-body">
+            <div class="form-group">
+                <label for="exampleInputEmail10">writer</label>
+                <input type="text" name="replyer" class="form-control" id="exampleInputEmail13" placeholder="아이디를 입력하세요." >
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">content</label>
+                <input type="text" name="reply" class="form-control" id="exampleInputEmail4" placeholder="내용을 입력하세요." >
             </div>
         </div>
 
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary replyBtn" >댓글등록</button>
+        </div>
+        <!--/.direct-chat -->
     </div>
-    <!-- /.container-fluid -->
 
-</div>
-<!-- End of Main Content -->
-
-
-
-
-
-
-
-<%--<form id="actionForm" action="/notice/list" method="get">--%>
-
-<%--    <input type="hidden" name="page" value="${pageMaker.page}">--%>
-<%--    <input type="hidden" name="size" value="${pageMaker.size}">--%>
-
-<%--</form>--%>
 
 <form id="actionForm" action="/notice/list" method="get">
 
@@ -104,6 +125,34 @@
     </c:if>
 
 </form>
+
+
+
+<div class="modal fade" id="modal-lg">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Modify/Remove</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="rno">
+                <input type="text" name="replyerMod">
+                <input type="text" name="replyMod">
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-info btnModReply">Modify</button>
+                <button type="button" class="btn btn-danger btnRem">Remove</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 
 <%@ include file="../includes/footer.jsp" %>
 
@@ -141,19 +190,19 @@
 
 <script>
 
-    const modalImage = new bootstrap.Modal(document.querySelector('#modal-image')) //jquery를 사용하지 않으려고 new 이 후 부터 복붙
+    // const modalImage = new bootstrap.Modal(document.querySelector('#modal-image')) //jquery를 사용하지 않으려고 new 이 후 부터 복붙
 
-    function showOrigin(fileLink){
-
-        //alert(fileLink);
-        document.querySelector("#targetImage").src = `/viewFile?file=\${fileLink}`
-        modalImage.show()
-    }
-
-    function after(result){
-        console.log("after............")
-        console.log("result", result)
-    }
+    // function showOrigin(fileLink){
+    //
+    //     //alert(fileLink);
+    //     document.querySelector("#targetImage").src = `/viewFile?file=\${fileLink}`
+    //     modalImage.show()
+    // }
+    //
+    // function after(result){
+    //     console.log("after............")
+    //     console.log("result", result)
+    // }
 
 
     //const doB() = function (arr) -> doB(after(result)) = function(arr) -> result = arr
@@ -176,14 +225,14 @@
 
     function getList(){  //댓글을 추가,수정 -> 목록을 새로 뿌려주려고 함수로 빼둠.
         const target = document.querySelector(".direct-chat-messages") //read.jsp 안에서 클래스를 불러옴.
-        const bno = '${boardDTO.bno}' //230
+        const nno = '${noticeDTO.nno}' //230
 
 
         function convertTemp(replyObj) {
 
             console.log(replyObj)
 
-            const {rno,bno,reply,replyer,replyDate,modDate}  = {...replyObj} //스프레드 연산자(전개 연산자)
+            const {rno,nno,reply,replyer,replyDate,modDate}  = {...replyObj} //스프레드 연산자(전개 연산자)
 
             const temp =`<div class="direct-chat-msg">
                 <div class="direct-chat-infos clearfix">
@@ -191,7 +240,7 @@
                     <span class="direct-chat-timestamp float-right">\${replyDate}}</span>
                 </div>
                 <div class="direct-chat-text" data-rno='\${rno}' data-replyer= '\${replyer}'>\${reply}</div> <!--\${reply} 는 우리가 눈으로 보는 댓글 내용 -->
-            </div>`
+            </div><hr>`
             // data-rno='\${rno}' 는 클래스가 가지는 값
 
             return temp
@@ -199,7 +248,7 @@
         }
 
 
-        getReplyList(bno).then(data => {
+        getReplyList(nno).then(data => {
             console.log(data) // 받아오는 데이터가 배열. array
             let str ="";
 
@@ -216,40 +265,53 @@
     })()
 
 
-    const modalDiv = $("#modal-sm")
+    // const modalDiv = $("#modal-sm")
+    //
+    // let oper = null
+    //
+    //
+    //
+    // document.querySelector(".addReplyBtn").addEventListener("click",function(){
+    //
+    //     oper = 'add'
+    //     modalDiv.modal('show')
+    //
+    // },false)
 
-    let oper = null
 
+    // document.querySelector(".replyBtn").addEventListener("click", ()=> {
+    //
+    //     e.preventDefault()
+    //     e.stopPropagation()
+    //
+    //     addReply
+    //
+    // },false)
 
+    document.querySelector(".replyBtn").addEventListener("click" , (e) => {
 
-    document.querySelector(".addReplyBtn").addEventListener("click",function(){
+        e.preventDefault()
+        e.stopPropagation()
 
-        oper = 'add'
-        modalDiv.modal('show')
-
-    },false)
-
-
-    document.querySelector(".operBtn").addEventListener("click",function (){
-
-        const bno ='${boardDTO.bno}'
+        const nno ='${noticeDTO.nno}'
         const replyer = document.querySelector("input[name='replyer']").value //태그이름 [속성= '값']
         const reply = document.querySelector("input[name='reply']").value
 
-        if (oper === 'add' ){  //버튼을 클릭해서 엑시오스로
-            const replyObj ={bno , replyer,reply}  //{bno:bno , replyer:replyer, reply:reply} 와 동일한 의미
+            const replyObj ={nno , replyer,reply}  //{bno:bno , replyer:replyer, reply:reply} 와 동일한 의미
             console.log(replyObj)
             addReply(replyObj).then(result => {
                 getList()    //ajax 비동기 호출이 두 번 일어난다. // 넣은 댓글까지 보여준다.
-                modalDiv.modal('hide')
+                //modalDiv.modal('hide')
                 document.querySelector("input[name='replyer']").value = "" // 모달창의 값을 비워준다. -> 이 문장이 없으면 모달창이 다시 뜨면 그 전 값이 그대로 들어가있다.
                 document.querySelector("input[name='reply']").value = ""
 
 
             })
-        }
+
 
     }, false)
+
+
 
     //수정/삭제 dom
 
@@ -263,7 +325,7 @@
     //이벤트를 파라미터로 받는다. 댓글창을 클릭하면 모달창이 나오게. direct-chat-messages(댓글창 영역)
     document.querySelector(".direct-chat-messages").addEventListener("click", (e)=>{
         const target = e.target
-        const bno = '${boardDTO.bno}'
+        const nno = '${noticeDTO.nno}'
 
         // true면 function convertTemp 의 data-rno='\${rno}' data-replyer= '\${replyer}' 속성을 가져온다.
         if (target.matches(".direct-chat-text")) {
@@ -271,7 +333,7 @@
             const rno = target.getAttribute("data-rno")
             const replyer = target.getAttribute("data-replyer")
             const reply = target.innerHTML // 속성으로 뽑지 않고 우리가 보이는 화면을 reply에 넣는다. reply 자체가 innerHTML 속성으로 들어가 있기 때문에.
-            console.log(rno, replyer, reply, bno)
+            console.log(rno, replyer, reply, nno)
             modRno.value = rno
             modReply.value = reply
             modReplyer.value = replyer // 댓글 말풍선을 누르면 모달창의 댓글 말풍선의 정보가 뜬다.
@@ -284,7 +346,6 @@
             document.querySelector(".btnRem").setAttribute("data-rno",rno)
 
             modModal.modal('show')
-
 
         }
 

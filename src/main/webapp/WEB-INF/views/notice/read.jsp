@@ -265,28 +265,28 @@
     })()
 
 
-    // const modalDiv = $("#modal-sm")
-    //
-    // let oper = null
-    //
-    //
-    //
-    // document.querySelector(".addReplyBtn").addEventListener("click",function(){
-    //
-    //     oper = 'add'
-    //     modalDiv.modal('show')
-    //
-    // },false)
+    const modalDiv = $("#modal-sm")
+
+    let oper = null
 
 
-    // document.querySelector(".replyBtn").addEventListener("click", ()=> {
-    //
-    //     e.preventDefault()
-    //     e.stopPropagation()
-    //
-    //     addReply
-    //
-    // },false)
+
+    document.querySelector(".addReplyBtn").addEventListener("click",function(){
+
+        oper = 'add'
+        modalDiv.modal('show')
+
+    },false)
+
+
+    document.querySelector(".replyBtn").addEventListener("click", ()=> {
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        addReply
+
+    },false)
 
     document.querySelector(".replyBtn").addEventListener("click" , (e) => {
 

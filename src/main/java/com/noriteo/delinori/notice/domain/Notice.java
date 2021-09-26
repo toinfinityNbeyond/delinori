@@ -19,6 +19,7 @@ public class Notice {
     private Long nno;
     private String title, writer, content;
     private LocalDateTime regDate, modDate;
+    private int replyCnt;
 
     @Builder.Default
     private List<NoticeAttach> attachList = new ArrayList<>();

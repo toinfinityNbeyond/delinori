@@ -25,13 +25,18 @@
     <insert id="insert">
         insert into notice (title,content,writer)
         values(#{title},#{content},#{writer})
-    <!--values (#{nno},#{title},#{writer},#{content},#{regDate},#{modDate})-->
+
+        <selectKey order="AFTER" resultType="long" keyProperty="nno">
+            select last_insert_id()
+        </selectKey>
     </insert>
 
 
     <select id="getList" resultType="com.noriteo.delinori.notice.domain.Notice">
         select * from notice
+
         <include refid="search"></include>
+
         order by nno desc limit #{skip},#{size}   <!--계속 해서 바뀐 값을 넣기위해 #{} 으로 감싸줌-->
     </select>
 
@@ -40,6 +45,7 @@
         select count(nno) from notice
 
         <include refid="search"></include>
+
     </select>
 
 
@@ -65,15 +71,24 @@
     </resultMap>
 
 
+    <select id="select" resultMap="noticeMap">
+        select *
+        from
+            notice notice left join attach_notice ta on notice.nno = ta.nno
+        where notice.nno = #{nno}
 
-    <select id="select" resultType="com.noriteo.delinori.notice.domain.Notice">
-        select * from notice where nno = #{nno}
     </select>
+
+
+<!--    <select id="select" resultType="com.noriteo.delinori.notice.domain.Notice">-->
+<!--        select * from notice where nno = #{nno}-->
+<!--    </select>-->
 
 
     <delete id="delete" >
         delete from notice where nno = #{nno}
     </delete>
+
 
 
     <update id="updateReplyCnt">

@@ -19,7 +19,7 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
         log.info("1-----------------------");
         log.info("1-----------------------");
 
-        return new Class[]{RootConfig.class, NoticeRootConfig.class};
+        return new Class[]{RootConfig.class}; //, NoticeRootConfig.class
     }
 
     @Override
@@ -28,7 +28,7 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
         log.info("2-----------------------");
         log.info("2-----------------------");//정상적으로 설정이 완료되면 로그가 찍히는 것.
 
-        return new Class[]{ServletConfig.class, NoticeServletConfig.class};
+        return new Class[]{ServletConfig.class}; //, NoticeServletConfig.class
     }
 
     @Override

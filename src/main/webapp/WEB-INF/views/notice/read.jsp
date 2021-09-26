@@ -46,17 +46,19 @@
         </form>
 
         <!--파일이 있는지 확인하고 read에서 첨부파일 조회하는 코드-->
-<%--        <div>--%>
-<%--            <c:forEach items="${noticeDTO.files}" var="attach">--%>
-<%--                <div>--%>
-<%--                    <!--첨부파일 링크를 보여주는 곳-->--%>
-<%--                    <c:if test="${attach.image}">--%>
-<%--                        <img onclick="javascript:showOrigin('${attach.getFileLink()}')" src="/viewFile?file=${attach.getThumbnail()}">    <!--attach.getFileLink()이 파라미터로 들어간다.-->--%>
-<%--                    </c:if>--%>
-<%--                        ${attach.fileName}--%>
-<%--                </div>--%>
-<%--            </c:forEach>--%>
-<%--        </div>--%>
+        <div>
+            <c:forEach items="${noticeDTO.files}" var="attach">
+                <div>
+                    <!--첨부파일 링크를 보여주는 곳-->
+                    <c:if test="${attach.image}">
+                        <img onclick="javascript:showOrigin('${attach.getFileLink()}')" src="/viewFile?file=${attach.getThumbnail()}">    <!--attach.getFileLink()이 파라미터로 들어간다.-->
+                    </c:if>
+                        ${attach.fileName}
+                </div>
+            </c:forEach>
+        </div>
+
+
         <div>
             <form action="/notice/list" method="get">
                 <input type="hidden" name="page" value="1"> <!--검색 시 결과가 1페이지부터 나오게 하려고 value값을 1 로 줬다.-->
@@ -154,6 +156,24 @@
 </div>
 <!-- /.modal -->
 
+
+<div class="modal fade" id="modal-image">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img id="targetImage">
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
 <%@ include file="../includes/footer.jsp" %>
 
 <script>
@@ -190,19 +210,19 @@
 
 <script>
 
-    // const modalImage = new bootstrap.Modal(document.querySelector('#modal-image')) //jquery를 사용하지 않으려고 new 이 후 부터 복붙
+     const modalImage = new bootstrap.Modal(document.querySelector('#modal-image')) //jquery를 사용하지 않으려고 new 이 후 부터 복붙
 
-    // function showOrigin(fileLink){
-    //
-    //     //alert(fileLink);
-    //     document.querySelector("#targetImage").src = `/viewFile?file=\${fileLink}`
-    //     modalImage.show()
-    // }
-    //
-    // function after(result){
-    //     console.log("after............")
-    //     console.log("result", result)
-    // }
+     function showOrigin(fileLink){
+
+         //alert(fileLink);
+         document.querySelector("#targetImage").src = `/viewFile?file=\${fileLink}`
+         modalImage.show()
+     }
+
+     function after(result){
+         console.log("after............")
+         console.log("result", result)
+     }
 
 
     //const doB() = function (arr) -> doB(after(result)) = function(arr) -> result = arr
@@ -237,7 +257,7 @@
             const temp =`<div class="direct-chat-msg">
                 <div class="direct-chat-infos clearfix">
                     <span class="direct-chat-name float-left">\${rno}--\${replyer}</span>
-                    <span class="direct-chat-timestamp float-right">\${replyDate}}</span>
+                    <span class="direct-chat-timestamp float-right">\${replyDate}</span>
                 </div>
                 <div class="direct-chat-text" data-rno='\${rno}' data-replyer= '\${replyer}'>\${reply}</div> <!--\${reply} 는 우리가 눈으로 보는 댓글 내용 -->
             </div><hr>`
@@ -271,22 +291,22 @@
 
 
 
-    document.querySelector(".addReplyBtn").addEventListener("click",function(){
-
-        oper = 'add'
-        modalDiv.modal('show')
-
-    },false)
-
-
-    document.querySelector(".replyBtn").addEventListener("click", ()=> {
-
-        e.preventDefault()
-        e.stopPropagation()
-
-        addReply
-
-    },false)
+    // document.querySelector(".addReplyBtn").addEventListener("click",function(){
+    //
+    //     oper = 'add'
+    //     modalDiv.modal('show')
+    //
+    // },false)
+    //
+    //
+    // document.querySelector(".replyBtn").addEventListener("click", ()=> {
+    //
+    //     e.preventDefault()
+    //     e.stopPropagation()
+    //
+    //     addReply
+    //
+    // },false)
 
     document.querySelector(".replyBtn").addEventListener("click" , (e) => {
 

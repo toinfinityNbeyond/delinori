@@ -15,8 +15,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 
-@Import(NoticeRootConfig.class)
+
 @Configuration
+@Import(NoticeRootConfig.class)
 @EnableTransactionManagement
 public class RootConfig {
 

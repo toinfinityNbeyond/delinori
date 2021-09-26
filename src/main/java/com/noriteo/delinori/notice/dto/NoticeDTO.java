@@ -23,6 +23,7 @@ public class NoticeDTO {
     private String content;
     private LocalDateTime regDate;
     private LocalDateTime modDate;
+    private int replyCnt;
 
     @Builder.Default
     private List<UploadResponseDTO> files  = new ArrayList<>(); //첨부파일을 넣을 공간.

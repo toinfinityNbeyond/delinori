@@ -46,7 +46,7 @@ public class UploadController {
             log.info(thumbnail);
             thumbnail.delete();
         }
-        return ResponseEntity.ok().body("deleteed"); // ok 는 응답코드 메세지를 만들어준다 - 콘솔에 헤더에 메시지를 준다 ok - 스프링 방식
+        return ResponseEntity.ok().body("deleted"); // ok 는 응답코드 메세지를 만들어준다 - 콘솔에 헤더에 메시지를 준다 ok - 스프링 방식
     }
 
     @GetMapping("/downFile")

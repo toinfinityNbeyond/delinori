@@ -21,9 +21,18 @@ public class NoticeServiceImpl implements NoticeService {
 
     @Override
     public Long register(NoticeDTO noticeDTO) {
+
         Notice notice = noticeDTO.getDomain();
 
         noticeMapper.insert(notice);
+
+        Long nno = notice.getNno();
+
+        notice.getAttachList().forEach(attach -> {
+            attach.setNno(nno);
+            noticeMapper.insertAttach(attach);
+        });
+
 
         return notice.getNno();
     }

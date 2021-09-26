@@ -51,7 +51,7 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
         registration.setInitParameter("throwExceptionIfNoHandlerFound","true");
 
         MultipartConfigElement multipartConfigElement
-                = new MultipartConfigElement("C:\\upload\\temp", 1024*1024*10, 1024*1024*20, 1023*1024*1); //1메가 넘으면 파일에다 저장해줘
+                = new MultipartConfigElement("/Users/cloud/upload/temp", 1024*1024*10, 1024*1024*20, 1023*1024*1); //1메가 넘으면 파일에다 저장해줘
 
         registration.setMultipartConfig(multipartConfigElement);
 

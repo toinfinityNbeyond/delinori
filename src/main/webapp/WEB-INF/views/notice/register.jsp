@@ -47,6 +47,7 @@
                             }
                         </style>
 
+
                         <label for="exampleInputFile">File input</label>
                         <div class="input-group">
                             <div class="custom-file">
@@ -58,15 +59,18 @@
                             </div>
                         </div>
 
+
                         <div class="uploadResult">
 
                         </div>
 
 
-
+                        <br/><br/>
+                        <div>
                         <button type="submit" id="reg" class="btn btn-primary btn-user btn-block">
                             Register
                         </button>
+                        </div>
 
 
 

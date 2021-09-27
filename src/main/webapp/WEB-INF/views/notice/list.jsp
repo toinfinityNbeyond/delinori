@@ -37,9 +37,9 @@
                                 </thead>
                                 <tbody>
                                 <c:forEach items="${dtoList}" var="dto">
-                                    <tr>
+                                    <tr onclick="javascript:moveRead(${dto.nno})">
                                         <td><c:out value="${dto.nno}"></c:out></td>
-                                        <td><a href="javascript:moveRead(${dto.nno})"> <c:out value="${dto.title}"></c:out></a></td>
+                                        <td> <c:out value="${dto.title}"></c:out></td>
                                         <td><c:out value="${dto.writer}"></c:out></td>
                                         <td><c:out value="${dto.content}"></c:out></td>
                                         <td><c:out value="${dto.regDate}"></c:out></td>

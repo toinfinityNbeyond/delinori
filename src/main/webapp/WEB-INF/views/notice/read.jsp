@@ -61,12 +61,12 @@
         </div>
 
 
-        <div>
-            <form action="/notice/list" method="get">
-                <input type="hidden" name="page" value="1"> <!--검색 시 결과가 1페이지부터 나오게 하려고 value값을 1 로 줬다.-->
-                <input type="hidden" name="size" value="${pageMaker.size}">
-            </form>  <!--버튼이 폼안에 있어야 작동을 해서 폼으로 감싸줬다.-->
-        </div>
+<%--        <div>--%>
+<%--            <form action="/notice/list" method="get">--%>
+<%--                <input type="hidden" name="page" value="1"> <!--검색 시 결과가 1페이지부터 나오게 하려고 value값을 1 로 줬다.-->--%>
+<%--                <input type="hidden" name="size" value="${pageMaker.size}">--%>
+<%--            </form>  <!--버튼이 폼안에 있어야 작동을 해서 폼으로 감싸줬다.-->--%>
+<%--        </div>--%>
     </div>
 
     <div>
@@ -123,31 +123,31 @@
 
 
 
-<%--<div class="modal fade" id="modal-lg">--%>
-<%--    <div class="modal-dialog modal-lg">--%>
-<%--        <div class="modal-content">--%>
-<%--            <div class="modal-header">--%>
-<%--                <h4 class="modal-title">Modify/Remove</h4>--%>
-<%--                <button type="button" class="close" data-dismiss="modal" aria-label="Close">--%>
-<%--                    <span aria-hidden="true">&times;</span>--%>
-<%--                </button>--%>
-<%--            </div>--%>
-<%--            <div class="modal-body">--%>
-<%--                <input type="hidden" name="rno">--%>
-<%--                <input type="text" name="replyerMod">--%>
-<%--                <input type="text" name="replyMod">--%>
-<%--            </div>--%>
-<%--            <div class="modal-footer justify-content-between">--%>
-<%--                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--%>
-<%--                <button type="button" class="btn btn-info btnModReply">Modify</button>--%>
-<%--                <button type="button" class="btn btn-danger btnRem">Remove</button>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--        <!-- /.modal-content -->--%>
-<%--    </div>--%>
-<%--    <!-- /.modal-dialog -->--%>
-<%--</div>--%>
-<%--<!-- /.modal -->--%>
+<div class="modal fade" id="modal-lg">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Modify/Remove</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="rno">
+                <input type="text" name="replyerMod">
+                <input type="text" name="replyMod">
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-info btnModReply">Modify</button>
+                <button type="button" class="btn btn-danger btnRem">Remove</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 
 
 
@@ -253,7 +253,7 @@
             const temp =`<div class="direct-chat-msg">
                 <div class="direct-chat-infos clearfix">
                     <span class="direct-chat-name float-left">\${replyer}</span>  <!--   \${rno}-- -->
-                    <span class="direct-chat-timestamp float-right">\${replyDate}</span>
+                    <span class="direct-chat-timestamp float-right">\${replyDate} <button onclick="delete">x</button></span>
                 </div>
                 <div class="direct-chat-text" data-rno='\${rno}' data-replyer= '\${replyer}'>\${reply}</div> <!--\${reply} 는 우리가 눈으로 보는 댓글 내용 -->
             </div><hr>`
@@ -281,9 +281,9 @@
     })()
 
 
-    const modalDiv = $("#modal-sm")
-
-    let oper = null
+    // const modalDiv = $("#modal-sm")
+    //
+    // let oper = null
 
 
 
@@ -390,6 +390,7 @@
         })
 
     },false)
+
 
 
 

@@ -31,16 +31,10 @@
 
   <!-- Sidebar -->
   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-    <style>
-      img{
-        height: 25px;
-      }
-    </style>
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
       <div class="sidebar-brand-icon">
-        <img src="/../../resources/img/logo.svg">
+        <img src="/../../resources/img/logo.svg" height="25px">
       </div>
       <div class="sidebar-brand-text mx-3">DELINORI</div>
     </a>
@@ -73,8 +67,8 @@
       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">회원</h6>
-          <a class="collapse-item" href="buttons.html">딜리</a>
-          <a class="collapse-item" href="cards.html">노리</a>
+          <a class="collapse-item" href="#">딜리</a>
+          <a class="collapse-item" href="/member/list">노리</a>
         </div>
       </div>
     </li>
@@ -108,9 +102,7 @@
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-      <a class="nav-link" href="/charts">
-        <i class="fas fa-fw fa-chart-area"></i>
-        <span>통계</span></a>
+      <a class="nav-link" href="/charts"><i class="fas fa-fw fa-chart-area"></i><span>통계</span></a>
     </li>
 
     <!-- Nav Item - Tables -->
@@ -268,13 +260,13 @@
               <a class="dropdown-item d-flex align-items-center" href="#">
                 <div class="dropdown-list-image mr-3">
                   <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                       alt="...">
+                       alt="…">
                   <div class="status-indicator bg-success"></div>
                 </div>
                 <div>
                   <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                    told me that people say this to all dogs, even if they aren't good...</div>
-                  <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                    told me that people say this to all dogs, even if they aren't good…</div>
+                  <div class="small text-gray-500">Chisken the Dog · 2w</div>
                 </div>
               </a>
               <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
@@ -284,4 +276,4 @@
         </ul>
 
       </nav>
-<%--      <!— End of Topbar —>--%>
+      <!— End of Topbar —>

@@ -36,7 +36,16 @@
                                     <textarea name="content" class="form-control form-control-user" placeholder="content"></textarea>
                                 </div>
                             </div>
+
+                            <div class="temp"></div>
+
+
                         </form>
+
+
+
+
+
 
 
                         <style>
@@ -67,9 +76,7 @@
 
                         <br/><br/>
                         <div>
-                        <button type="submit" id="reg" class="btn btn-primary btn-user btn-block">
-                            Register
-                        </button>
+                        <button type="submit" id="submitBtn" class="btn btn-primary btn-user btn-block">Register</button>
                         </div>
 
 
@@ -93,7 +100,7 @@
 
 const form1 = document.querySelector("#form1")
 
-document.querySelector("#reg").addEventListener("click", ()=> {
+document.querySelector("#submitBtn").addEventListener("click", ()=> {
     form1.submit()
 },false)
 

@@ -35,7 +35,7 @@ public class NoticeController {
         model.addAttribute("time", timeService.getNow());
     }
 
-   // @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/register")
     public void registerGet(){ //항상 똑같은 페이지  -> void
         //자동으로 해당하는 jsp로 감

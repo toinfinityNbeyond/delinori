@@ -191,6 +191,7 @@
 
 
 
+
     <%--document.querySelector(".btnMod").addEventListener("click",()=> {--%>
 
     <%--    const bno = '${noticeDTO.nno}'--%>
@@ -205,6 +206,7 @@
 <script src="/resources/js/reply.js"></script>
 
 <script>
+
 
      const modalImage = new bootstrap.Modal(document.querySelector('#modal-image')) //jquery를 사용하지 않으려고 new 이 후 부터 복붙
 
@@ -253,7 +255,7 @@
             const temp =`<div class="direct-chat-msg">
                 <div class="direct-chat-infos clearfix">
                     <span class="direct-chat-name float-left">\${replyer}</span>  <!--   \${rno}-- -->
-                    <span class="direct-chat-timestamp float-right">\${replyDate} <button onclick="delete">x</button></span>
+                    <span class="direct-chat-timestamp float-right">\${replyDate} <button>x</button></span>
                 </div>
                 <div class="direct-chat-text" data-rno='\${rno}' data-replyer= '\${replyer}'>\${reply}</div> <!--\${reply} 는 우리가 눈으로 보는 댓글 내용 -->
             </div><hr>`
@@ -262,6 +264,8 @@
             return temp
 
         }
+
+
 
 
         getReplyList(nno).then(data => {

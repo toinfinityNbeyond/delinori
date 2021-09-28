@@ -41,6 +41,7 @@ public class RootConfig {
 //        config.setJdbcUrl("jdbc:log4jdbc:mysql://localhost:3306/springdb");
 //        config.setUsername("springuser");
 //        config.setPassword("springuser");
+        config.setMaximumPoolSize(3); // mysql
         HikariDataSource dataSource = new HikariDataSource(config);
         return dataSource;
     }

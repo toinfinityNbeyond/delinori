@@ -1,6 +1,5 @@
 package com.noriteo.delinori.notice.service;
 
-import com.noriteo.delinori.notice.domain.Reply;
 import com.noriteo.delinori.notice.dto.ReplyDTO;
 import com.noriteo.delinori.notice.mapper.NoticeMapper;
 import com.noriteo.delinori.notice.mapper.ReplyMapper;
@@ -30,13 +29,13 @@ public class ReplyServiceImpl implements ReplyService {
 
 
     @Override
-    public List<ReplyDTO> getRepliesWithNno(long nno) {
+    public List<ReplyDTO> getRepliesWithNno(Long nno) {
         return replyMapper.getListWithNotice(nno).stream()
                 .map(reply -> entityToDTO(reply)).collect(Collectors.toList());
     }
 
     @Override
-    public int remove(long rno) {
+    public int remove(Long rno) {
 
         return replyMapper.delete(rno);
     }
@@ -45,6 +44,7 @@ public class ReplyServiceImpl implements ReplyService {
     public int modify(ReplyDTO replyDTO) {
         return replyMapper.update(dtoToEntity(replyDTO)); //replyDTO 를 Entity
     }
+
 
 
 

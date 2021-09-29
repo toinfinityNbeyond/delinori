@@ -12,6 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/notice")
 public class SampleController {
 
+    @GetMapping("/doAll")
+    public void doAll(){
+        log.warn("doAll.........");
+    }
+
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/doNori")
     public void doNori(){
         log.warn("doNori....................");

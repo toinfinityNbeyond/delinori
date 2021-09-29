@@ -9,11 +9,13 @@ public interface ReplyService {
 
     int add(ReplyDTO replyDTO);
 
-    List<ReplyDTO> getRepliesWithNno(long nno);
+    List<ReplyDTO> getRepliesWithNno(Long nno);
 
-    int remove(long rno);
+    int remove(Long rno);
 
     int modify(ReplyDTO replyDTO);
+
+    //List<Reply> getListWithPaging(Long nno);
 
     default Reply dtoToEntity (ReplyDTO dto) { //DTO -> Entity
         Reply reply = Reply.builder()
@@ -43,4 +45,9 @@ public interface ReplyService {
         return replyDTO;
 
     }
+
+
+
+
+
 }

@@ -3,6 +3,7 @@ package com.noriteo.delinori.notice.domain;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @ToString
@@ -17,4 +18,6 @@ public class Reply {
     private String reply;
     private LocalDateTime replyDate;
     private LocalDateTime modDate;
+
+
 }

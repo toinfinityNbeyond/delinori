@@ -1,12 +1,14 @@
 package com.noriteo.delinori.notice.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.noriteo.delinori.notice.domain.Reply;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Builder
@@ -18,6 +20,7 @@ public class ReplyDTO {
     private Long nno;
     private String replyer;
     private String reply;
+
 
     @JsonFormat(shape =  JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime replyDate;

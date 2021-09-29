@@ -31,7 +31,6 @@ public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint 
             res.sendRedirect("/customLogin?erzzzzzzs");
         }
 
-
-
     }
+
 }

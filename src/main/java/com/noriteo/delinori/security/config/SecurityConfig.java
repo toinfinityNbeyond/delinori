@@ -57,9 +57,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //        log.info("--------security config---------------");
 
 
-        http.formLogin();
+        //http.formLogin();
 
-        //http.formLogin().loginPage("/customLogin").loginProcessingUrl("/login");
+        http.formLogin().loginPage("/customLogin").loginProcessingUrl("/login");
 
 
         //http.logout().invalidateHttpSession(true);// 디폴드 값이라 주지 않아도 작동

@@ -22,6 +22,9 @@
     <update id="update">
         update reply_notice set reply = #{reply}, modDate = now() where rno = #{rno}
     </update>
+
+
+
 </mapper>
 
 

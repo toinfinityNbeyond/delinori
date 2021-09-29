@@ -2,6 +2,7 @@ package com.noriteo.delinori.notice.mapper;
 
 
 import com.noriteo.delinori.notice.domain.Reply;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -14,5 +15,10 @@ public interface ReplyMapper {
     int delete(long rno);
 
     int update(Reply reply);
+
+
+
+
+
 
 }

@@ -1,5 +1,6 @@
 package com.noriteo.delinori.notice.controller;
 
+import com.noriteo.delinori.notice.domain.Reply;
 import com.noriteo.delinori.notice.dto.ReplyDTO;
 import com.noriteo.delinori.notice.service.ReplyService;
 import lombok.RequiredArgsConstructor;
@@ -66,12 +67,8 @@ public class ReplyController {
         //서비스 계층 호출
         return replyService.getRepliesWithNno(nno);
 
-
-
-
-
-
     }
+
 
 
 }

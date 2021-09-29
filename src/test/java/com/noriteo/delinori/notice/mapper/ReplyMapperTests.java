@@ -2,9 +2,12 @@ package com.noriteo.delinori.notice.mapper;
 
 
 import com.noriteo.delinori.common.config.RootConfig;
+import com.noriteo.delinori.common.dto.PageRequestDTO;
+import com.noriteo.delinori.common.dto.PageResponseDTO;
 import com.noriteo.delinori.notice.config.NoticeRootConfig;
 import com.noriteo.delinori.notice.domain.Reply;
 import lombok.extern.log4j.Log4j2;
+import org.apache.ibatis.annotations.Param;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 
+import java.util.List;
 import java.util.stream.IntStream;
 
 @Log4j2
@@ -53,5 +57,18 @@ public class ReplyMapperTests {
             replyMapper.getListWithNotice(nno).forEach(reply -> log.info(reply));
         }
 
+        @Test
+        public void testList2() {
+
+            PageRequestDTO page = new PageRequestDTO();
+
+            List<Reply> replies = replyMapper.getListWithPaging(560L);
+
+
+            replies.forEach(reply -> log.info(reply));
+
+
+
+        }
 
 }

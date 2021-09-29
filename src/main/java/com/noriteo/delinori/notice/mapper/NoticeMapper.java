@@ -5,10 +5,11 @@ import com.noriteo.delinori.notice.domain.Notice;
 import com.noriteo.delinori.notice.domain.NoticeAttach;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-
+@Transactional
 public interface NoticeMapper {
 
     void insert(Notice notice);

@@ -20,7 +20,7 @@
                             <div>
                                 <div class="form-group">
                                     <input type="text" name="writer" class="form-control form-control-user" id="exampleInputEmail"
-                                           placeholder="writer">
+                                           placeholder="writer" readonly value="<sec:authentication property="principal.mid"/>">
                                 </div>
                             </div>
 

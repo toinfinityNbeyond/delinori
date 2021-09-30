@@ -43,10 +43,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-//        http.authorizeRequests()
-//                .antMatchers("/notice/doNori").permitAll()
-//                .antMatchers("/notice/doDeli").access("hasRole('ROLE_DELI')")
-//                .antMatchers("/notice/doAdmin").access("hasRole('ROLE_ADMIN')");
+        http.authorizeRequests()
+                .antMatchers("/notice/doAll").permitAll()
+                .antMatchers("/notice/doNori").access("hasRole('ROLE_NORI')")
+                .antMatchers("/notice/doDeli").access("hasRole('ROLE_DELI')")
+                .antMatchers("/notice/doAdmin").access("hasRole('ROLE_ADMIN')");
 
 //        log.info("--------security config---------------");
 //        log.info("--------security config---------------");
@@ -61,6 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.formLogin().loginPage("/customLogin").loginProcessingUrl("/login");
 
+        http.formLogin().defaultSuccessUrl("/notice/list");
 
         //http.logout().invalidateHttpSession(true);// 디폴드 값이라 주지 않아도 작동
 
@@ -71,6 +73,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 //        http.exceptionHandling()
 //                .authenticationEntryPoint(customAuthenticationEntryPoint());
+
 
 
     }

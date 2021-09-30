@@ -1,6 +1,6 @@
 package com.noriteo.delinori.notice.domain;
 
-import com.noriteo.delinori.notice.dto.UploadResponseDTO;
+import com.noriteo.delinori.common.dto.UploadResponseDTO;
 import com.noriteo.delinori.notice.dto.NoticeDTO;
 import lombok.*;
 
@@ -44,7 +44,7 @@ public class Notice {
             return uploadResponseDTO;
         }).collect(Collectors.toList());
 
-        noticeDTO.setFiles(uploadResponseDTOList);
+        //noticeDTO.setFiles(uploadResponseDTOList);
 
         return noticeDTO;
 

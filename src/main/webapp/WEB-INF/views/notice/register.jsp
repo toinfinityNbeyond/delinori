@@ -19,13 +19,15 @@
                         <form id="form1" action="/notice/register" method="post">
                             <div>
                                 <div class="form-group">
+                                    <label for="exampleInputEmail">작성자</label>
                                     <input type="text" name="writer" class="form-control form-control-user" id="exampleInputEmail"
-                                           placeholder="writer" readonly value="<sec:authentication property="principal.mid"/>">
+                                           placeholder="writer" readonly>
                                 </div>
                             </div>
 
                             <div>
                                 <div class="form-group">
+                                    <label for="exampleInputEmail2">제목</label>
                                     <input type="text" name="title" class="form-control form-control-user" id="exampleInputEmail2"
                                            placeholder="title">
                                 </div>
@@ -33,7 +35,8 @@
 
                             <div>
                                 <div class="form-group">
-                                    <textarea name="content" class="form-control form-control-user" placeholder="content"></textarea>
+                                    <label for="content">내용</label>
+                                    <textarea name="content" class="form-control form-control-user" id="content" placeholder="content"></textarea>
                                 </div>
                             </div>
 
@@ -57,7 +60,7 @@
                         </style>
 
 
-                        <label for="exampleInputFile">File input</label>
+                        <label for="exampleInputFile">파일 입력</label>
                         <div class="input-group">
                             <div class="custom-file">
                                 <input type="file" name="uploadFiles" class="custom-file-input" id="exampleInputFile" multiple>
@@ -76,7 +79,7 @@
 
                         <br/><br/>
                         <div>
-                        <button type="submit" id="submitBtn" class="btn btn-primary btn-user btn-block">Register</button>
+                        <button type="submit" id="submitBtn" class="btn btn-primary btn-user btn-block">등록</button>
                         </div>
 
 

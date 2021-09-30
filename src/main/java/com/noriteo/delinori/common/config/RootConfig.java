@@ -1,6 +1,7 @@
 package com.noriteo.delinori.common.config;
 
 import com.noriteo.delinori.notice.config.NoticeRootConfig;
+import com.noriteo.delinori.qna.qnaconfig.QnaRootConfig;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -17,7 +18,7 @@ import javax.sql.DataSource;
 
 
 @Configuration
-@Import(NoticeRootConfig.class)
+@Import({NoticeRootConfig.class, QnaRootConfig.class})
 @EnableTransactionManagement
 public class RootConfig {
 

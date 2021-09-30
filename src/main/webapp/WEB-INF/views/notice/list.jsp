@@ -2,7 +2,9 @@
 <%@include file="../includes/header.jsp"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
+        <sec:authentication property="principal" var="memberDTO"/>
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
@@ -12,6 +14,39 @@
                     <h1 class="h3 mb-0 text-gray-800">공지</h1>
                     <a href="/notice/register" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">글쓰기</a>
                 </div>
+
+
+
+
+
+<%--                <div class="login_area">--%>
+<%--                    <sec:authorize access="isAnonymous()">--%>
+<%--&lt;%&ndash;                        <div class="login_button"><a href="/customLogin">로그인</a> </div>&ndash;%&gt;--%>
+<%--                        <a href="/customLogin" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">로그인</a>--%>
+<%--                    </sec:authorize>--%>
+
+
+
+<%--                    <sec:authorize access="isAuthenticated()">--%>
+<%--&lt;%&ndash;                        <div class="login_success_area">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                            <a href="/notice/logout">로그아웃</a>&ndash;%&gt;--%>
+<%--                             <a href="/customLogout" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">로그아웃</a>--%>
+<%--&lt;%&ndash;                        </div>&ndash;%&gt;--%>
+
+<%--                    </sec:authorize>--%>
+<%--                </div>--%>
+
+
+
+<%--                <form action="/customLogout" method="post">--%>
+<%--                    <sec:authorize access="isAuthenticated()">--%>
+<%--                    <input type="hidden" id="${memberDTO.mid}" value="${memeberDTO.pw}"/>--%>
+<%--                    <button>로그아웃</button>--%>
+<%--                    </sec:authorize>--%>
+<%--                </form>--%>
+
+
+
 
 
                 <p class="mb-4"> </p>
@@ -128,6 +163,7 @@
 
 
 <%@ include file="../includes/footer.jsp" %>
+
 
 
 

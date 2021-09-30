@@ -57,18 +57,6 @@ public class ReplyMapperTests {
             replyMapper.getListWithNotice(nno).forEach(reply -> log.info(reply));
         }
 
-        @Test
-        public void testList2() {
 
-            PageRequestDTO page = new PageRequestDTO();
-
-            List<Reply> replies = replyMapper.getListWithPaging(560L);
-
-
-            replies.forEach(reply -> log.info(reply));
-
-
-
-        }
 
 }

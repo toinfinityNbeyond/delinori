@@ -1,5 +1,6 @@
 package com.noriteo.delinori.notice.dto;
 
+import com.noriteo.delinori.common.dto.UploadResponseDTO;
 import com.noriteo.delinori.notice.domain.Notice;
 import com.noriteo.delinori.notice.domain.NoticeAttach;
 import lombok.AllArgsConstructor;

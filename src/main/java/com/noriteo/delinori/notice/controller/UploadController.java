@@ -1,7 +1,7 @@
 package com.noriteo.delinori.notice.controller;
 
 
-import com.noriteo.delinori.notice.dto.UploadResponseDTO;
+import com.noriteo.delinori.common.dto.UploadResponseDTO;
 import lombok.extern.log4j.Log4j2;
 import net.coobird.thumbnailator.Thumbnailator;
 import org.springframework.http.HttpHeaders;

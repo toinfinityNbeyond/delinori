@@ -23,7 +23,7 @@ public class SampleController {
         log.warn("doNori....................");
     }
 
-    @PreAuthorize("isAuthenticated()")
+    //@PreAuthorize("isAuthenticated()")
     @GetMapping("/doDeli")
     public void doDeli(){
         log.warn("doDeli....................");
@@ -33,6 +33,13 @@ public class SampleController {
     @GetMapping("/doAdmin")
     public void doAdmin(){
         log.warn("doAdmin....................");
+    }
+
+
+    @GetMapping("/logout")
+    public void logout() {
+        log.info("logout 꺄오!!!!!!!!!!!!!!!!!!!!!!!!");
+
     }
 
 }

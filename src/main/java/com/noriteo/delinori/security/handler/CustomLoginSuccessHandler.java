@@ -21,7 +21,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 
 
 
-        response.sendRedirect("/notice/list");
+       // response.sendRedirect("/notice/list");
 
     }
 }

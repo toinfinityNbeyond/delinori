@@ -29,11 +29,11 @@ public class NoticeController {
 
     private final NoticeService noticeService;
 
-    @GetMapping("/time")
-    public void getTime(Model model){
-        log.info("==========controller getTime=========");
-        model.addAttribute("time", timeService.getNow());
-    }
+//    @GetMapping("/time")
+//    public void getTime(Model model){
+//        log.info("==========controller getTime=========");
+//        model.addAttribute("time", timeService.getNow());
+//    }
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/register")

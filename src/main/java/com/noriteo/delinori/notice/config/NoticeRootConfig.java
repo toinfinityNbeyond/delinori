@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Import;
 @Configuration
 @MapperScan(basePackages = "com.noriteo.delinori.notice.mapper")
 @ComponentScan(basePackages = "com.noriteo.delinori.notice.service")
-@Import(NoticeAOPConfig.class)
+//@Import(NoticeAOPConfig.class)
 public class NoticeRootConfig {
 
 

@@ -1,6 +1,6 @@
 package com.noriteo.delinori.notice.domain;
 
-import com.noriteo.delinori.common.dto.UploadResponseDTO;
+import com.noriteo.delinori.notice.dto.NoticeUploadResponseDTO;
 import com.noriteo.delinori.notice.dto.NoticeDTO;
 import lombok.*;
 
@@ -34,17 +34,17 @@ public class Notice {
                 .modDate(modDate)
                 .build();
 
-        List<UploadResponseDTO> uploadResponseDTOList = attachList.stream().map(attach -> {
-            UploadResponseDTO uploadResponseDTO = UploadResponseDTO.builder()
+        List<NoticeUploadResponseDTO> noticeUploadResponseDTOList = attachList.stream().map(attach -> {
+            NoticeUploadResponseDTO noticeUploadResponseDTO = NoticeUploadResponseDTO.builder()
                     .uuid(attach.getUuid())
                     .fileName(attach.getFileName())
                     .uploadPath(attach.getPath())
                     .image(attach.isImage())
                     .build();
-            return uploadResponseDTO;
+            return noticeUploadResponseDTO;
         }).collect(Collectors.toList());
 
-        //noticeDTO.setFiles(uploadResponseDTOList);
+        noticeDTO.setFiles(noticeUploadResponseDTOList);
 
         return noticeDTO;
 

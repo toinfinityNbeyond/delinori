@@ -5,13 +5,10 @@ import com.noriteo.delinori.common.dto.PageRequestDTO;
 import com.noriteo.delinori.common.dto.PageResponseDTO;
 import com.noriteo.delinori.notice.dto.NoticeDTO;
 import com.noriteo.delinori.notice.service.NoticeService;
-import com.noriteo.delinori.notice.service.TimeService;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,18 +21,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequiredArgsConstructor
 public class NoticeController {
 
-
-    private final TimeService timeService;
-
     private final NoticeService noticeService;
 
-//    @GetMapping("/time")
-//    public void getTime(Model model){
-//        log.info("==========controller getTime=========");
-//        model.addAttribute("time", timeService.getNow());
-//    }
-
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @GetMapping("/register")
     public void registerGet(){ //항상 똑같은 페이지  -> void
         //자동으로 해당하는 jsp로 감
@@ -79,7 +67,7 @@ public class NoticeController {
     }  // 페이지와 사이즈를 파라미터로 던진다.
 
 
-    @GetMapping(value = {"/read","/modify", "/read2"})
+    @GetMapping(value = {"/read"})
     public void read(Long nno, PageRequestDTO pageRequestDTO,Model model) {  //자동으로 모델에 전달. PageRequestDTO를 파라미터로 사용하지 않으면 개별 값을 다 파라미터로 선언해야함;;
         log.info("c   read" +  nno );
         log.info("c   read" + pageRequestDTO);

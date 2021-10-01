@@ -2,9 +2,9 @@
 <%@include file="../includes/header.jsp"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<%--<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>--%>
 
-        <sec:authentication property="principal" var="memberDTO"/>
+<%--        <sec:authentication property="principal" var="memberDTO"/>--%>
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
@@ -62,12 +62,12 @@
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                 <tr>
-                                    <th>nno</th>
-                                    <th>title</th>
-                                    <th>writer</th>
-                                    <th>content</th>
-                                    <th>regDate</th>
-                                    <th>modDate</th>
+                                    <th>글번호</th>
+                                    <th>내용</th>
+                                    <th>작성자</th>
+                                    <th>내용</th>
+                                    <th>등록시간</th>
+<%--                                    <th>수정시간</th>--%>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -78,38 +78,63 @@
                                         <td><c:out value="${dto.writer}"></c:out></td>
                                         <td><c:out value="${dto.content}"></c:out></td>
                                         <td><c:out value="${dto.regDate}"></c:out></td>
-                                        <td><c:out value="${dto.modDate}"></c:out></td>
-                                    </tr>
+<%--                                        <td><c:out value="${dto.modDate}"></c:out></td>--%>
                                 </c:forEach>
                                 </tbody>
                             </table>
 
-                            <form action="/notice/list" method="get">
-                                <input type="hidden" name="page" value="1"> <!--검색 시 결과가 1페이지부터 나오게 하려고 value값을 1 로 줬다.-->
+
+                            <form action="/notice/list" method="get"
+                                  class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                                <input type="hidden" name="page" value="1">
                                 <input type="hidden" name="size" value="${pageMaker.size}">
-                                <div class="col-sm-3">
-                                    <!-- select -->
-                                    <div class="form-group">
-                                        <label>Search</label>
-                                        <select name="type" class="custom-select">
-                                            <option value="">-------</option>
-                                            <option value="T" ${pageRequestDTO.type == "T"?"selected" : ""}>제목</option>
-                                            <option value="TC" ${pageRequestDTO.type == "TC"?"selected" : ""}>제목내용</option>
-                                            <option value="C" ${pageRequestDTO.type == "C"?"selected" : ""}>내용</option>
-                                            <option value="TCW" ${pageRequestDTO.type == "TCW"?"selected" : ""}>제목내용작성자</option>
-                                        </select>
-                                    </div>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small" placeholder="검색내용을 입력하세요."
-                                               aria-label="Search" aria-describedby="basic-addon2" name="keyword" value="${pageRequestDTO.keyword}">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="submit">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
+
+
+                                <div class="dropdown mb-4 input-group">
+                                    <select class="btn btn-primary dropdown-toggle" name="type"
+                                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                        <p class="st">
+                                        <div class="dropdown-menu animated--fade-in"
+                                             aria-labelledby="dropdownMenuButton">
+                                            <option value="T" ${pageRequestDTO.type=="T"?"selected":""}>제목</option>
+                                            <option value="W" ${pageRequestDTO.type=="W"?"selected":""}>작성자</option>
+                                            <option value="C" ${pageRequestDTO.type=="C"?"selected":""}>내용</option>
                                         </div>
+                                        </p>
+                                    </select>
+                                    <input type="text" class="form-control bg-light border-0 small"
+                                           placeholder="검색어를 입력해주세요"
+                                           aria-label="Search" aria-describedby="basic-addon2"
+                                           name="keyword" value="${pageRequestDTO.keyword}">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="submit">
+                                            <i class="fas fa-search fa-sm"></i>
+                                        </button>
                                     </div>
                                 </div>
-                            </form>  <!--버튼이 폼안에 있어야 작동을 해서 폼으로 감싸줬다.-->
+
+                            </form>
+                            <!-- 검색처리 END -->
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <style>
+                    .st{
+                        margin-left: 5cm;
+                    }
+                </style>
+
+
+
+
+
+
+
                         </div>
 
                         <div class="card-footer clearfix">

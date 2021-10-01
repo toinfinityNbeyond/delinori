@@ -23,7 +23,7 @@ public class StringToLocalDateTimeConverter implements Converter<String, LocalDa
 
         if(matcher.find()){ //find() 또는 matches() : 둘 다 boolean
             return LocalDateTime.parse(
-                    source+"T00:00:00", DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+                    source+" 00:00:00", DateTimeFormatter.ISO_LOCAL_DATE_TIME);
         }
 
         return LocalDateTime.now(); //현재시간을 출력

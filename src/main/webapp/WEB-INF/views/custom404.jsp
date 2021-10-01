@@ -9,7 +9,7 @@
     <div class="text-center">
         <div class="error mx-auto" data-text="404">404</div>
         <p class="lead text-gray-800 mb-5">페이지를 찾을 수 없습니다</p>
-        <a href="/notice/list">리스트로 돌아가기</a>
+        <a href="/member/list">노리 리스트로 돌아가기</a>
     </div>
 
 </div>

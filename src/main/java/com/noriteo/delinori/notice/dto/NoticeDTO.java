@@ -1,6 +1,5 @@
 package com.noriteo.delinori.notice.dto;
 
-import com.noriteo.delinori.common.dto.UploadResponseDTO;
 import com.noriteo.delinori.notice.domain.Notice;
 import com.noriteo.delinori.notice.domain.NoticeAttach;
 import lombok.AllArgsConstructor;
@@ -27,7 +26,7 @@ public class NoticeDTO {
     private int replyCnt;
 
     @Builder.Default
-    private List<UploadResponseDTO> files  = new ArrayList<>(); //첨부파일을 넣을 공간.
+    private List<NoticeUploadResponseDTO> files  = new ArrayList<>(); //첨부파일을 넣을 공간.
 
 
     public Notice getDomain() {
@@ -40,12 +39,12 @@ public class NoticeDTO {
                 .modDate(modDate)
                 .build();
 
-        files.forEach(uploadResponseDTO -> {
+        files.forEach(noticeUploadResponseDTO -> {
             NoticeAttach attach = NoticeAttach.builder()
-                    .fileName(uploadResponseDTO.getFileName())
-                    .uuid(uploadResponseDTO.getUuid())
-                    .image(uploadResponseDTO.isImage())
-                    .path(uploadResponseDTO.getUploadPath())
+                    .fileName(noticeUploadResponseDTO.getFileName())
+                    .uuid(noticeUploadResponseDTO.getUuid())
+                    .image(noticeUploadResponseDTO.isImage())
+                    .path(noticeUploadResponseDTO.getUploadPath())
                     .build();
 
             notice.addAttach(attach);

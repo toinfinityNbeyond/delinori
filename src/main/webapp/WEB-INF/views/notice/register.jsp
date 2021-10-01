@@ -129,7 +129,7 @@ document.querySelector("#uploadBtn").addEventListener("click", (e) => {
     //axios 로 업로드
     const headerObj = { headers: {'Content-Type' : 'multipart/form-data'}}
 
-    axios.post("/upload", formData, headerObj).then((response) => {
+    axios.post("/notice/upload", formData, headerObj).then((response) => {
         const arr = response.data
         console.log(arr)
         let str = ""
@@ -138,10 +138,10 @@ document.querySelector("#uploadBtn").addEventListener("click", (e) => {
             const {uuid,fileName,uploadPath, image, thumbnail, fileLink} = {...arr[i]}
 
             if (image) {
-                str += `<div data-uuid='\${uuid}' data-filename='\${fileName}' data-uploadpath='\${uploadPath}' data-image='\${image}'><img src='/viewFile?file=\${thumbnail}'/><span>\${fileName}</span>
+                str += `<div data-uuid='\${uuid}' data-filename='\${fileName}' data-uploadpath='\${uploadPath}' data-image='\${image}'><img src='/notice/viewFile?file=\${thumbnail}'/><span>\${fileName}</span>
                             <button onclick="javascript:removeFile('\${fileLink}',this)" >x</button></div>` // 업로드를 여러번 할 수 있어서 누적. this 는 현재 객체를 의미
             } else{
-                str += `<div data-uuid='\${uuid}'data-filename='\${fileName}' data-uploadpath='\${uploadPath}' data-image='\${image}'><a href='/downFile?file=\${fileLink}'>\${fileName}</a></div>`
+                str += `<div data-uuid='\${uuid}'data-filename='\${fileName}' data-uploadpath='\${uploadPath}' data-image='\${image}'><a href='/notice/downFile?file=\${fileLink}'>\${fileName}</a></div>`
             }
 
         } //end for
@@ -152,7 +152,7 @@ document.querySelector("#uploadBtn").addEventListener("click", (e) => {
 
 function removeFile(fileLink,ele) {
     console.log(fileLink)
-    axios.post("/removeFile", {fileName:fileLink}).then(response => {
+    axios.post("/notice/removeFile", {fileName:fileLink}).then(response => {
         const targetDiv = ele.parentElement
         targetDiv.remove()
     })

@@ -9,7 +9,6 @@
     <div class="text-center">
 <%--        <div class="error mx-auto" data-text="404"></div>--%>
         <p class="lead text-gray-800 mb-5">로그아웃 성공</p>
-        <a href="/notice/list">목록으로 돌아가기</a>
     </div>
 
 </div>

@@ -110,27 +110,4 @@
     <update id="updateReplyCnt">
         update member set replyCnt=replyCnt+#{num} where mid=#{mid}
     </update>
-
-    <resultMap id="memberMap" type="com.noriteo.delinori.member.domain.Member">
-        <id property="mid" column="mid"></id>
-        <result property="mpw" column="mpw"></result>
-        <result property="mname" column="mname"></result>
-        <result property="maddress" column="maddress"></result>
-        <result property="memail" column="memail"></result>
-        <result property="mphone" column="mphone"></result>
-        <result property="enabled" column="enabled"></result>
-        <collection property="roleList" resultMap="memberRoleMap"></collection>
-    </resultMap>
-
-    <resultMap id="memberRoleMap" type="com.noriteo.delinori.member.domain.MemberRole">
-        <result property="mid" column="mid"></result>
-        <result property="role" column="role"></result>
-    </resultMap>
-
-
-    <select id="findByMid" resultMap="memberMap">
-        select * from member inner join member_role on member.mid = member_role.mid
-        where member.mid=#{mid}
-    </select>
-
  </mapper>

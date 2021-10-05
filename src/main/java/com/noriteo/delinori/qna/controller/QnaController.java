@@ -7,6 +7,7 @@ import com.noriteo.delinori.qna.dto.QnaDTO;
 import com.noriteo.delinori.qna.service.QnaService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -56,7 +57,7 @@ public class QnaController {
 
     }
 
-    //@PreAuthorize("isAuthenticated()")
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/read")
     public void read(Long qno, PageRequestDTO pageRequestDTO, Model model) {
 

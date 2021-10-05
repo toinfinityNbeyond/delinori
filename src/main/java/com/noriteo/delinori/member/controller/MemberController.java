@@ -23,7 +23,7 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    //@PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/delilist")
     public void getListDeli(PageRequestDTO pageRequestDTO, Model model) {
         log.info("c getList...."+pageRequestDTO);
@@ -35,7 +35,7 @@ public class MemberController {
         model.addAttribute("pageMaker", new PageMaker(page, size, total));
     }
 
-    //@PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/list")
     public void getListNori(PageRequestDTO pageRequestDTO, Model model) {
         log.info("c getList...."+pageRequestDTO);
@@ -47,7 +47,7 @@ public class MemberController {
         model.addAttribute("pageMaker", new PageMaker(page, size, total));
     }
 
-    //@PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/deliread")
     public void readDeli(String mid, PageRequestDTO pageRequestDTO, Model model) {
         log.info("c   read "+mid);
@@ -55,7 +55,7 @@ public class MemberController {
         model.addAttribute("memberDTO",memberService.readDeli(mid));
     }
 
-    //@PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/read")
     public void readNori(String mid, PageRequestDTO pageRequestDTO, Model model) {
         log.info("c   read "+mid);
@@ -63,17 +63,17 @@ public class MemberController {
         model.addAttribute("memberDTO",memberService.readNori(mid));
     }
 
-    //@PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/deliregister")
     public void registerGetDeli(){
     }
 
-    //@PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/register")
     public void registerGetNori(){
     }
 
-    //@PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/deliregister")
     public String registerPostDeli(MemberDTO memberDTO, RedirectAttributes redirectAttributes) {
         log.info("memberDTO: "+memberDTO);
@@ -90,7 +90,7 @@ public class MemberController {
         return "redirect:/member/delilist";
     }
 
-    //@PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/register")
     public String registerPostNori(MemberDTO memberDTO, RedirectAttributes redirectAttributes) {
         log.info("memberDTO: "+memberDTO);
@@ -101,7 +101,7 @@ public class MemberController {
         return "redirect:/member/list";
     }
 
-    //@PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/deliremove")
     public String removeDeli(String mid, RedirectAttributes redirectAttributes){
         log.info("c    removeController" + mid);
@@ -112,7 +112,7 @@ public class MemberController {
         return "redirect:/member/delilist";
     }
 
-    //@PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/remove")
     public String removeNori(String mid, RedirectAttributes redirectAttributes){
         log.info("c    removeController" + mid);

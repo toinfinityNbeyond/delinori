@@ -60,7 +60,7 @@
                         </style>
 
 
-                        <label for="exampleInputFile">파일 입력</label>
+                        <label for="exampleInputFile">파일 등록</label>
                         <div class="input-group">
                             <div class="custom-file">
                                 <input type="file" name="uploadFiles" class="custom-file-input" id="exampleInputFile" multiple>

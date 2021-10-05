@@ -1,5 +1,7 @@
 package com.noriteo.delinori.saleboard.service;
 
+import com.noriteo.delinori.common.dto.PageRequestDTO;
+import com.noriteo.delinori.common.dto.PageResponseDTO;
 import com.noriteo.delinori.saleboard.domain.Reply;
 import com.noriteo.delinori.saleboard.dto.SaleBoardReplyDTO;
 
@@ -11,7 +13,7 @@ public interface SaleBoardReplyService {
 
     int addGno(SaleBoardReplyDTO saleBoardReplyDTO);
 
-    List<SaleBoardReplyDTO> getRepliesWithSno(Long sno);
+    PageResponseDTO<SaleBoardReplyDTO> getRepliesList(PageRequestDTO pageRequestDTO, Long sno);
 
     int Remove(Long rno);
 

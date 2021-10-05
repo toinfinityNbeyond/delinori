@@ -17,7 +17,7 @@ public class MemberReplyController {
 
     private final MemberReplyService memberReplyService;
 
-    //@PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("")
     public int add(@RequestBody MemberReplyDTO memberReplyDTO){
 
@@ -27,7 +27,7 @@ public class MemberReplyController {
         return memberReplyService.add(memberReplyDTO);
     }
 
-    //@DeleteMapping("/{rno}")
+    @DeleteMapping("/{rno}")
     public String remove(@PathVariable(name = "rno") Long rno){
         log.info("---reply remove----");
         log.info("rno: "+rno);
@@ -35,7 +35,7 @@ public class MemberReplyController {
         return "success";
     }
 
-    //@PutMapping("/{rno}")
+    @PutMapping("/{rno}")
     public String modify(@PathVariable(name = "rno") Long rno, @RequestBody MemberReplyDTO memberReplyDTO){
         log.info("---reply modify----"+rno);
         log.info(memberReplyDTO);
@@ -43,7 +43,7 @@ public class MemberReplyController {
         return "success";
     }
 
-    //@GetMapping("/list/{mid}")
+    @GetMapping("/list/{mid}")
     public List<MemberReplyDTO> getMemberReplies(@PathVariable(name = "mid") String mid){
        //서비스 계층 호출: 모델에 안 담고 바로 반환
         return memberReplyService.getRepliesWithMid(mid);

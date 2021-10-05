@@ -1,5 +1,13 @@
-const getReplyList = async (sno) => {
-    const response = await axios.get(`/saleboard/replies/list/${sno}`)
+const getReplyList = async (sno, page) => {
+
+    const pageValue = page || 1
+
+    const response = await axios.get(`/saleboard/replies/list/${sno}/${pageValue}`)
+
+    console.log("sno : " + sno)
+    console.log("page : " + page)
+
+    console.log(response)
 
     return response.data
 }

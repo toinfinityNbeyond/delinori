@@ -16,8 +16,12 @@
         update reply_saleboard set gno = rno where gno is null
     </update>
 
-    <select id="getListWithBoard" resultType="com.noriteo.delinori.saleboard.domain.Reply">
-        select * from reply_saleboard where sno = #{sno} order by gno asc, rno asc
+    <select id="getListWithPaging" resultType="com.noriteo.delinori.saleboard.domain.Reply">
+        select * from reply_saleboard where sno = #{sno} order by gno asc, rno asc limit #{pageRequestDTO.skip},#{pageRequestDTO.size}
+    </select>
+
+    <select id="getCountBySno" resultType="int">
+        select count(rno) from reply_saleboard where sno = #{sno}
     </select>
 
     <delete id="delete">

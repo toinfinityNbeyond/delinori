@@ -2,6 +2,8 @@ package com.noriteo.delinori.common.config;
 
 import com.noriteo.delinori.board.config.BoardServletConfig;
 import com.noriteo.delinori.common.converter.StringToLocalDateTimeConverter;
+import com.noriteo.delinori.common.security.config.SecurityConfig;
+import com.noriteo.delinori.common.security.config.SecurityServletConfig;
 import com.noriteo.delinori.member.config.MemberServletConfig;
 import com.noriteo.delinori.notice.config.NoticeServletConfig;
 import com.noriteo.delinori.qna.config.QnaServletConfig;
@@ -18,14 +20,12 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 @EnableWebMvc
-@ComponentScan(basePackages = {"com.noriteo.delinori.common.exception",
-        "com.noriteo.delinori.common.controller",
-        "com.noriteo.delinori.saleboard.controller",
-        "com.noriteo.delinori.board.controller",
-        "com.noriteo.delinori.member.controller",
-        "com.noriteo.delinori.notice.controller",
-        "com.noriteo.delinori.qna.controller"})
-@Import({SaleBoardServletConfig.class, BoardServletConfig.class, MemberServletConfig.class, NoticeServletConfig.class, QnaServletConfig.class})
+@ComponentScan(basePackages = {"com.noriteo.delinori.common.exception", "com.noriteo.delinori.common.controller"})
+@Import({SaleBoardServletConfig.class,
+        BoardServletConfig.class,
+        MemberServletConfig.class,
+        NoticeServletConfig.class,
+        QnaServletConfig.class, SecurityServletConfig.class})
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class ServletConfig implements WebMvcConfigurer {
 

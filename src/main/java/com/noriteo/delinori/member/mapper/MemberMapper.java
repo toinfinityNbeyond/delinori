@@ -35,6 +35,4 @@ public interface MemberMapper {
 
     int updateReplyCnt(@Param("mid") String mid, @Param("num") int num);
 
-    Member findByMid(String mid);
-
 }

@@ -1,7 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
+<%--<sec:authentication property="principal" var="memberDTO"/>--%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +36,6 @@
 
   <!-- Sidebar -->
   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
       <div class="sidebar-brand-icon">
@@ -57,7 +59,7 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-      회원 관리
+      회원관리
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
@@ -65,7 +67,7 @@
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
          aria-expanded="true" aria-controls="collapseTwo">
         <i class="fas fa-fw fa-folder"></i>
-        <span>회원 정보 관리</span>
+        <span>회원정보관리</span>
       </a>
       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
@@ -105,9 +107,7 @@
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-      <a class="nav-link" href="/chart">
-        <i class="fas fa-fw fa-chart-area"></i>
-        <span>통계</span></a>
+      <a class="nav-link" href="/chart"><i class="fas fa-fw fa-chart-area"></i><span>통계</span></a>
     </li>
 
     <!-- Nav Item - Tables -->
@@ -120,20 +120,18 @@
   </ul>
   <!-- End of Sidebar -->
 
-  <style>
-    #content-wrapper {
-      overflow: hidden;
-    }
-  </style>
-
   <!-- Content Wrapper -->
   <div id="content-wrapper" class="d-flex flex-column">
 
     <!-- Main Content -->
     <div id="content">
 
+
+
       <!-- Topbar -->
       <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+
 
         <!-- Sidebar Toggle (Topbar) -->
         <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -167,7 +165,10 @@
             </div>
           </li>
 
+
+
           <div class="login_area">
+
             <div>
               <sec:authorize access="isAnonymous()">
                 <%--                        <div class="login_button"><a href="/customLogin">로그인</a> </div>--%>
@@ -185,6 +186,7 @@
                   <a href="/customLogout" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" >로그아웃</a>
                     <%--                        </div>--%>
                 </p>
+
               </sec:authorize>
             </div>
           </div>
@@ -193,14 +195,19 @@
             .lg{
               text-align: center;
               margin-top: 0.5cm;
+
             }
           </style>
+
 
           <!-- Nav Item - Alerts -->
           <li class="nav-item dropdown no-arrow mx-1">
             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-bell fa-fw"></i>
+
+
+
               <!-- Counter - Alerts -->
               <span class="badge badge-danger badge-counter">3+</span>
             </a>
@@ -229,7 +236,7 @@
                 </div>
                 <div>
                   <div class="small text-gray-500">10분 전</div>
-                  통계 자료가 업데이트되었습니다.
+                  통계 자료가 업데이트 되었습니다.
                 </div>
               </a>
               <a class="dropdown-item d-flex align-items-center" href="#">
@@ -239,11 +246,11 @@
                   </div>
                 </div>
                 <div>
-                  <div class="small text-gray-500">2021. 09. 29.</div>
-                  인증되지 않은 사용자의 접근이 감지되었습니다.
+                  <div class="small text-gray-500">2021.09.29</div>
+                  인증 되지 않은 사용자의 접근이 감지 되었습니다.
                 </div>
               </a>
-              <a class="dropdown-item text-center small text-gray-500" href="#">알림 더 보기</a>
+              <a class="dropdown-item text-center small text-gray-500" href="#">알림 더보기</a>
             </div>
           </li>
 
@@ -263,7 +270,7 @@
               </h6>
               <a class="dropdown-item d-flex align-items-center" href="#">
                 <div class="dropdown-list-image mr-3">
-                  <img class="rounded-circle" src="/resources/img/undraw_profile_1.svg"
+                  <img class="rounded-circle" src="img/undraw_profile_1.svg"
                        alt="...">
                   <div class="status-indicator bg-success"></div>
                 </div>
@@ -274,35 +281,35 @@
               </a>
               <a class="dropdown-item d-flex align-items-center" href="#">
                 <div class="dropdown-list-image mr-3">
-                  <img class="rounded-circle" src="/resources/img/undraw_profile_2.svg"
+                  <img class="rounded-circle" src="img/undraw_profile_2.svg"
                        alt="...">
                   <div class="status-indicator"></div>
                 </div>
                 <div>
-                  <div class="text-truncate">딜리노리 관리자님! 오늘 기준 회원이 10,000명이 되었습니다.</div>
+                  <div class="text-truncate">딜리노리 관리자님! 오늘기준 회원이 1,0000명이 되었습니다.</div>
                   <div class="small text-gray-500">Jae Chun · 1d</div>
                 </div>
               </a>
               <a class="dropdown-item d-flex align-items-center" href="#">
                 <div class="dropdown-list-image mr-3">
-                  <img class="rounded-circle" src="/resources/img/undraw_profile_3.svg"
+                  <img class="rounded-circle" src="img/undraw_profile_3.svg"
                        alt="...">
                   <div class="status-indicator bg-warning"></div>
                 </div>
                 <div>
-                  <div class="text-truncate">딜리노리 관리자님! 금일 조회된 거래 건수는 729건입니다!</div>
+                  <div class="text-truncate">딜리노리 관리자님! 금일 조회된 거래건수는 729건 입니다!</div>
                   <div class="small text-gray-500">Morgan Alvarez · 2d</div>
                 </div>
               </a>
               <a class="dropdown-item d-flex align-items-center" href="#">
                 <div class="dropdown-list-image mr-3">
                   <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                       alt="...">
+                       alt="…">
                   <div class="status-indicator bg-success"></div>
                 </div>
                 <div>
-                  <div class="text-truncate">더운 여름도 가고 이제 날씨가 점점 시원해지고 있네요. 좋은 하루 보내시길 바랄게요.</div>
-                  <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                  <div class="text-truncate">더운 여름도 가고 이제 날씨가 점점 시원해지고 있네요, 가을 같이 좋은 하루 보내시길 바랄게요.</div>
+                  <div class="small text-gray-500">Chisken the Dog · 2w</div>
                 </div>
               </a>
               <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
@@ -312,4 +319,4 @@
         </ul>
 
       </nav>
-      <!-- End of Topbar -->
+<%--      <!— End of Topbar —>--%>

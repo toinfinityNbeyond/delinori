@@ -21,8 +21,6 @@ public class Member {
     @Builder.Default
     private List<DeliAttach> attachList=new ArrayList<>();
 
-    private List<MemberRole> roleList;
-
     public MemberDTO getDTO() {
             MemberDTO memberDTO=MemberDTO.builder()
                     .mid(mid)

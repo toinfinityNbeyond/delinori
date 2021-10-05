@@ -1,6 +1,7 @@
 package com.noriteo.delinori.common.config;
 
 import com.noriteo.delinori.board.config.BoardRootConfig;
+import com.noriteo.delinori.common.security.config.SecurityConfig;
 import com.noriteo.delinori.member.config.MemberRootConfig;
 import com.noriteo.delinori.notice.config.NoticeRootConfig;
 import com.noriteo.delinori.qna.config.QnaRootConfig;
@@ -20,7 +21,13 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableTransactionManagement
-@Import({SaleBoardRootConfig.class, BoardRootConfig.class, MemberRootConfig.class, NoticeRootConfig.class, QnaRootConfig.class})
+@Import({SaleBoardRootConfig.class,
+        BoardRootConfig.class,
+        MemberRootConfig.class,
+        NoticeRootConfig.class,
+        QnaRootConfig.class,
+        SecurityConfig.class
+})
 public class RootConfig {
 
     @Bean //mybatis 연결

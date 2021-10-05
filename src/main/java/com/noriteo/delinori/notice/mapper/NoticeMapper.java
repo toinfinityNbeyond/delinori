@@ -4,7 +4,6 @@ import com.noriteo.delinori.common.dto.PageRequestDTO;
 import com.noriteo.delinori.notice.domain.Notice;
 import com.noriteo.delinori.notice.domain.NoticeAttach;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

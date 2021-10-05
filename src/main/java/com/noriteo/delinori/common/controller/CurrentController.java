@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class CurrentController {
     //@PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/current")
-    public void chart(){
-        log.warn("chart.........");
+    public void current(){
+        log.warn("current.........");
     }
 }

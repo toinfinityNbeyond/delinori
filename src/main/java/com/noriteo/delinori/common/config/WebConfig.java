@@ -1,5 +1,7 @@
 package com.noriteo.delinori.common.config;
 
+import com.noriteo.delinori.common.security.config.SecurityConfig;
+import com.noriteo.delinori.common.security.config.SecurityServletConfig;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -17,7 +19,7 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
         log.info("1-----------------------");
         log.info("1-----------------------");
 
-        return new Class[]{RootConfig.class};
+        return new Class[]{RootConfig.class, SecurityConfig.class};
     }
 
     @Override
@@ -26,7 +28,7 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
         log.info("2-----------------------");
         log.info("2-----------------------");//정상적으로 설정이 완료되면 로그가 찍히는 것.
 
-        return new Class[]{ServletConfig.class};
+        return new Class[]{ServletConfig.class, SecurityServletConfig.class};
     }
 
     @Override

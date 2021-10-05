@@ -1,4 +1,4 @@
-//package com.noriteo.delinori.notice.config;
+package com.noriteo.delinori.notice.config;//package com.noriteo.delinori.notice.config;
 //
 //import org.springframework.context.annotation.ComponentScan;
 //import org.springframework.context.annotation.Configuration;

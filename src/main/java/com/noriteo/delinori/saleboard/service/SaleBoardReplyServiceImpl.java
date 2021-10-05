@@ -1,5 +1,7 @@
 package com.noriteo.delinori.saleboard.service;
 
+import com.noriteo.delinori.common.dto.PageRequestDTO;
+import com.noriteo.delinori.common.dto.PageResponseDTO;
 import com.noriteo.delinori.saleboard.dto.SaleBoardReplyDTO;
 import com.noriteo.delinori.saleboard.mapper.SaleBoardReplyMapper;
 import com.noriteo.delinori.saleboard.mapper.SaleBoardMapper;
@@ -36,9 +38,23 @@ public class SaleBoardReplyServiceImpl implements SaleBoardReplyService {
         return saleBoardReplyMapper.replyUpdate(dtoToEntity(saleBoardReplyDTO));
     }
 
+//    @Override
+//    public List<SaleBoardReplyDTO> getRepliesWithSno(Long sno) {
+//        return saleBoardReplyMapper.getListWithBoard(sno).stream().map(reply -> entityToDTO(reply)).collect(Collectors.toList());
+//    }
+
     @Override
-    public List<SaleBoardReplyDTO> getRepliesWithSno(Long sno) {
-        return saleBoardReplyMapper.getListWithBoard(sno).stream().map(reply -> entityToDTO(reply)).collect(Collectors.toList());
+    public PageResponseDTO<SaleBoardReplyDTO> getRepliesList(PageRequestDTO pageRequestDTO, Long sno) {
+
+        List<SaleBoardReplyDTO> dtoList = saleBoardReplyMapper.getListWithPaging(pageRequestDTO, sno).stream().map(reply -> entityToDTO(reply)).collect(Collectors.toList());
+        int count = saleBoardReplyMapper.getCountBySno(sno);
+
+        PageResponseDTO<SaleBoardReplyDTO> pageResponseDTO = PageResponseDTO.<SaleBoardReplyDTO>builder()
+                .dtoList(dtoList)
+                .count(count)
+                .build();
+
+        return pageResponseDTO;
     }
 
     @Override

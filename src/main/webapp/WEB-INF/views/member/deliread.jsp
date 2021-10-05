@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!--헤더 붙여넣기( 앞으로 이거 긁어 쓰세요 ) -->
 <%@ include file="../includes/header.jsp" %>
-<%--<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>--%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <div class="container">
 
     <div class="card o-hidden border-0 shadow-lg my-5">

@@ -1,9 +1,13 @@
 package com.noriteo.delinori.saleboard.controller;
 
+import com.noriteo.delinori.common.dto.PageRequestDTO;
+import com.noriteo.delinori.common.dto.PageResponseDTO;
 import com.noriteo.delinori.saleboard.dto.SaleBoardReplyDTO;
 import com.noriteo.delinori.saleboard.service.SaleBoardReplyService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -49,10 +53,22 @@ public class SaleBoardReplyController {
 
     }
 
-    @GetMapping("/list/{sno}")
-    public List<SaleBoardReplyDTO> getBoardReplies(@PathVariable(name = "sno") Long sno) {
+    @GetMapping(value = "/list/{sno}/{page}", produces = "application/json")
+    public ResponseEntity<PageResponseDTO> getList (
+            @PathVariable("page") int page,
+            @PathVariable("sno") Long sno) {
 
-        return saleBoardReplyService.getRepliesWithSno(sno);
+        PageRequestDTO pageRequestDTO = PageRequestDTO.builder()
+                .page(page)
+                .size(10)
+                .build();
+
+        log.info("=====================================");
+        log.info("sno : " + sno);
+        log.info("pageRequestDTO : " + pageRequestDTO);
+
+        return new ResponseEntity<>(saleBoardReplyService.getRepliesList(pageRequestDTO, sno), HttpStatus.OK);
+
 
     }
 

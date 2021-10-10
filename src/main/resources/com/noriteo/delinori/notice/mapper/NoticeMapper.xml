@@ -84,6 +84,10 @@
         delete from notice where nno = #{nno}
     </delete>
 
+    <update id="update">
+        update notice set title = #{title}, content =#{content}, modDate = now()
+        where nno = #{nno}
+    </update>
 
 
     <update id="updateReplyCnt">

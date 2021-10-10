@@ -15,4 +15,6 @@ public interface NoticeService {
     NoticeDTO read(Long nno);
 
     boolean remove(Long nno);
+
+    boolean modify(NoticeDTO noticeDTO);
 }

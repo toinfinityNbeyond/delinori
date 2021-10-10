@@ -21,6 +21,8 @@ public interface NoticeMapper {
 
     int delete(Long nno);
 
+    int update(Notice notice);
+
     int updateReplyCnt(@Param("nno") Long nno, @Param("num") int num);
 
     int insertAttach(NoticeAttach attach);

@@ -48,7 +48,6 @@ public class NoticeServiceImpl implements NoticeService {
                 .count(count)
                 .build();
 
-
         return pageResponseDTO;
     }
 
@@ -65,4 +64,21 @@ public class NoticeServiceImpl implements NoticeService {
 
     @Override
     public boolean remove(Long nno) {return noticeMapper.delete(nno) > 0;}
+
+    @Override
+    public boolean modify(NoticeDTO noticeDTO) {
+        noticeMapper.deleteAttach(noticeDTO.getNno());
+
+        Notice notice = noticeDTO.getDomain();
+
+        Long nno = notice.getNno();
+
+        notice.getAttachList().forEach(attach -> {
+            attach.setNno(nno);
+            noticeMapper.insertAttach(attach);
+        });
+
+        return noticeMapper.update(notice) > 0; // 0보다 크면 true
+        //도메인에 board 값이 있기 때문에 getDomain을 사용
+    }
 }

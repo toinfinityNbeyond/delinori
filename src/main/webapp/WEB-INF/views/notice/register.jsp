@@ -47,10 +47,6 @@
 
 
 
-
-
-
-
                         <style>
                             .uploadResult {
                                 display: flex;

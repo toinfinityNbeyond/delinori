@@ -20,7 +20,7 @@
                 <input type="text" name="nno" class="form-control" id="exampleInputEmail10" value="<c:out value="${noticeDTO.nno}"></c:out>" readonly>
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">내용</label>
+                <label for="exampleInputEmail1">글제목</label>
                 <input type="text" name="title" class="form-control" id="exampleInputEmail1" value="<c:out value="${noticeDTO.title}"></c:out>" readonly>
             </div>
             <div class="form-group">
@@ -46,8 +46,9 @@
 <%--        </div>--%>
 
             <div class="form-inline justify-content-end">
-                <button type="button" class="btn btn-primary ml-2 btnList">LIST</button>
-                <button type="button" class="btn btn-danger ml-2 btnDel">DELETE</button>
+                <button type="button" class="btn btn-primary ml-2 btnList">목록</button>
+                <button type="button" class="btn btn-success ml-2 btnMod">수정</button>
+                <button type="button" class="btn btn-danger ml-2 btnDel">삭제</button>
             </div>
 
         </form>
@@ -160,6 +161,21 @@
         form1.setAttribute("method","post")
         form1.submit()
     },false)
+
+
+
+    document.querySelector(".btnMod").addEventListener("click",()=> {
+
+
+        const nno = '${noticeDTO.nno}'
+
+
+
+        actionForm.setAttribute("action","/notice/modify")
+        actionForm.innerHTML +=`<input type='hidden' name='nno' value='\${nno}'>`
+        actionForm.submit()
+    }, false)
+
 
 
 

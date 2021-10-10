@@ -24,7 +24,7 @@ public class NoticeController {
 
 //    @PreAuthorize("isAuthenticated()")
     @GetMapping("/register")
-    public void registerGet(){ //항상 똑같은 페이지  -> void
+    public void registerGet(){
         //자동으로 해당하는 jsp로 감
     }
 
@@ -66,7 +66,7 @@ public class NoticeController {
     }  // 페이지와 사이즈를 파라미터로 던진다.
 
 
-    @GetMapping(value = {"/read"})
+    @GetMapping(value = {"/read", "/modify"})
     public void read(Long nno, PageRequestDTO pageRequestDTO,Model model) {  //자동으로 모델에 전달. PageRequestDTO를 파라미터로 사용하지 않으면 개별 값을 다 파라미터로 선언해야함;;
         log.info("c   read" +  nno );
         log.info("c   read" + pageRequestDTO);
@@ -76,8 +76,6 @@ public class NoticeController {
 
 
     }
-
-
 
 
 
@@ -91,13 +89,45 @@ public class NoticeController {
 
 //        공f (noticeService.remove(nno)) {
 //            log.info("remove success");
-//            redirectAttributes.addFlashAttribute("result", "success");  //모달
+            redirectAttributes.addFlashAttribute("result", "success");  //모달
 //            //jsp가 없기 때문에 개발자 도구 콘솔창으로 확인시 키 값만 나온다. -> 확인을 위해서 사용.
 //        }
         return "redirect:/notice/list";  //삭제를 하고 모달창이 떠야함.
 
     }
 
+
+    @PostMapping("/modify")
+    public String modify(NoticeDTO noticeDTO,PageRequestDTO pageRequestDTO, RedirectAttributes redirectAttributes) {
+
+        log.info("---------------------");
+        log.info("---------------------");
+        log.info("---------------------");
+        log.info(noticeDTO);
+        if (noticeDTO.getFiles().size() > 0) {
+            noticeDTO.getFiles().forEach(dto -> log.info(dto));
+        }
+        log.info("---------------------");
+        log.info("---------------------");
+        log.info("---------------------");
+
+
+        if (noticeService.modify(noticeDTO)) {
+            redirectAttributes.addFlashAttribute("result", "modified"); //모달 창으로 보여주기 위해서.redirectAttributes 사용해서 일회성으로 함. 다시 돌아가면 모달창이 뜨면 안되기 때문에.
+
+        }
+        redirectAttributes.addAttribute("nno", noticeDTO.getNno()); // 몇 번이 수정됐는지 보여 주기 위해bno 값 보냄. redirectAttributes 객체를 전달해주는 역할
+        // 수정하고 목록으로 돌아갈 때 원래 보던 페이지로 돌아감
+        redirectAttributes.addAttribute("page", pageRequestDTO.getPage());
+        redirectAttributes.addAttribute("size", pageRequestDTO.getSize());
+
+        if(pageRequestDTO.getType() != null){
+            redirectAttributes.addAttribute("type", pageRequestDTO.getType());
+            redirectAttributes.addAttribute("keyword", pageRequestDTO.getKeyword());
+        } //MODIFY 는 post의 방식의 검색처리
+
+        return "redirect:/notice/read"; // 수정 완료하면 read로 돌아감
+    }
 }
 
 

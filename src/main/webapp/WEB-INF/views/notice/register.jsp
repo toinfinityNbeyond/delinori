@@ -21,7 +21,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail">작성자</label>
                                     <input type="text" name="writer" class="form-control form-control-user" id="exampleInputEmail"
-                                           placeholder="writer" readonly>
+                                           placeholder="writer">
                                 </div>
                             </div>
 

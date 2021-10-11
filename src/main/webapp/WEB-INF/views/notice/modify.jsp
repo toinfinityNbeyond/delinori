@@ -51,39 +51,49 @@
         <!-- /.card-body -->
         <div class="temp"></div>
 
-        <div class="form-inline justify-content-end">
-            <button type="button" class="btn btn-primary ml-2 btnList">목록</button>
-            <button type="button" class="btn btn-success ml-2 btnMod">수정</button>
+
+<%--        수정 파일 업로드--%>
+        <label for="exampleInputFile">파일 등록</label>
+        <div class="input-group">
+            <div class="custom-file">
+                <input type="file" name="uploadFiles" class="custom-file-input" id="exampleInputFile" multiple>
+                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+            </div>
+            <div class="input-group-append">
+                <span class="input-group-text" id="uploadBtn">Upload</span>
+            </div>
         </div>
 
 
+
+
+
+        <br/>
+        <div class="form-inline justify-content-end">
+            <button type="button" class="btn btn-primary ml-2 btnList">목록</button>
+            <button type="submit" class="btn btn-success ml-2 btnMod">수정</button>
+        </div>
     </form>
     <br/><br/>
     <br/><br/>
 
-<%--    <label for="exampleInputFile">File input</label>--%>
-<%--    <div class="input-group">--%>
-<%--        <div class="custom-file">--%>
-<%--            <input type="file" name="uploadFiles" class="custom-file-input" id="exampleInputFile" multiple>--%>
-<%--            <label class="custom-file-label" for="exampleInputFile">Choose file</label>--%>
-<%--        </div>--%>
-<%--        <div class="input-group-append">--%>
-<%--            <span class="input-group-text" id="uploadBtn">Upload</span>--%>
-<%--        </div>--%>
-<%--    </div>--%>
 
-    <!--파일이 있는지 확인하고 read에서 첨부파일 조회하는 코드-->
+
+
     <div class="uploadResult">
         <c:forEach items="${noticeDTO.files}" var="attach">
-            <div>
-                <!--첨부파일 링크를 보여주는 곳-->
+            <div data-uuid="${attach.uuid}" data-filename="${attach.fileName}" data-uploadpath="${attach.uploadPath}" data-image="${attach.image}">
                 <c:if test="${attach.image}">
-                    <img onclick="javascript:showOrigin('${attach.getFileLink()}')" src="/notice/viewFile?file=${attach.getThumbnail()}">    <!--attach.getFileLink()이 파라미터로 들어간다.-->
+                    <img src="/viewFile?file=${attach.getThumbnail()}">
                 </c:if>
-                    ${attach.fileName}
+                <span>${attach.fileName}</span>
+                <button onclick="javascript:removeDiv(this)">x</button> <!--파일의 링크를 찾아서 삭제.Div만 삭제. this는 자기자신을 가르키고 상위인 부모를 찾아서 삭제. 버튼의 상위버전인 Div를 찾아서 삭제 -->
             </div>
         </c:forEach>
     </div>
+
+
+
 </div>
 
 
@@ -182,7 +192,7 @@
         //axios 로 업로드
         const headerObj = { headers: {'Content-Type' : 'multipart/form-data'}}
 
-        axios.post("/upload", formData, headerObj).then((response) => {
+        axios.post("/notice/upload", formData, headerObj).then((response) => {
             const arr = response.data
             console.log(arr)
             let str = ""

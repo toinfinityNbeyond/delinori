@@ -2,50 +2,15 @@
 <%@include file="../includes/header.jsp"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%--<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>--%>
-
-<%--        <sec:authentication property="principal" var="memberDTO"/>--%>
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">공지</h1>
+                    <h1 class="h3 mb-0 text-gray-800">공지사항</h1>
                     <a href="/notice/register" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">글쓰기</a>
                 </div>
-
-
-
-
-
-<%--                <div class="login_area">--%>
-<%--                    <sec:authorize access="isAnonymous()">--%>
-<%--&lt;%&ndash;                        <div class="login_button"><a href="/customLogin">로그인</a> </div>&ndash;%&gt;--%>
-<%--                        <a href="/customLogin" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">로그인</a>--%>
-<%--                    </sec:authorize>--%>
-
-
-
-<%--                    <sec:authorize access="isAuthenticated()">--%>
-<%--&lt;%&ndash;                        <div class="login_success_area">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                            <a href="/notice/logout">로그아웃</a>&ndash;%&gt;--%>
-<%--                             <a href="/customLogout" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">로그아웃</a>--%>
-<%--&lt;%&ndash;                        </div>&ndash;%&gt;--%>
-
-<%--                    </sec:authorize>--%>
-<%--                </div>--%>
-
-
-
-<%--                <form action="/customLogout" method="post">--%>
-<%--                    <sec:authorize access="isAuthenticated()">--%>
-<%--                    <input type="hidden" id="${memberDTO.mid}" value="${memeberDTO.pw}"/>--%>
-<%--                    <button>로그아웃</button>--%>
-<%--                    </sec:authorize>--%>
-<%--                </form>--%>
-
-
 
 
 
@@ -55,19 +20,17 @@
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">공지</h6>
+                        <h6 class="m-0 font-weight-bold text-primary"></h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                 <tr>
-                                    <th>글번호</th>
-                                    <th>내용</th>
+                                    <th>번호</th>
+                                    <th>제목</th>
                                     <th>작성자</th>
-                                    <th>내용</th>
-                                    <th>등록시간</th>
-<%--                                    <th>수정시간</th>--%>
+                                    <th>작성일</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -76,9 +39,7 @@
                                         <td><c:out value="${dto.nno}"></c:out></td>
                                         <td> <c:out value="${dto.title}"></c:out></td>
                                         <td><c:out value="${dto.writer}"></c:out></td>
-                                        <td><c:out value="${dto.content}"></c:out></td>
                                         <td><c:out value="${dto.regDate}"></c:out></td>
-<%--                                        <td><c:out value="${dto.modDate}"></c:out></td>--%>
                                 </c:forEach>
                                 </tbody>
                             </table>
@@ -98,8 +59,9 @@
                                         <div class="dropdown-menu animated--fade-in"
                                              aria-labelledby="dropdownMenuButton">
                                             <option value="T" ${pageRequestDTO.type=="T"?"selected":""}>제목</option>
-                                            <option value="W" ${pageRequestDTO.type=="W"?"selected":""}>작성자</option>
                                             <option value="C" ${pageRequestDTO.type=="C"?"selected":""}>내용</option>
+                                            <option value="W" ${pageRequestDTO.type=="W"?"selected":""}>작성자</option>
+
                                         </div>
                                         </p>
                                     </select>

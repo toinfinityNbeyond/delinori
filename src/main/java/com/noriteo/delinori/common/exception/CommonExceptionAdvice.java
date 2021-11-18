@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
+import java.util.Arrays;
+
 //@ControllerAdvice
 @Log4j2
 public class CommonExceptionAdvice {
@@ -16,6 +18,12 @@ public class CommonExceptionAdvice {
     public String exceptAll(Exception ex, Model model) {
 
         log.error(ex.getMessage());
+
+        StackTraceElement[] arr = ex.getStackTrace();
+
+        for(int i = 0; i < arr.length; i++){
+            log.error(arr[i]);
+        }
 
         model.addAttribute("exception", ex);
 

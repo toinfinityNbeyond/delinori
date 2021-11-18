@@ -14,7 +14,7 @@
                 <div class="col-lg-12">
                     <div class="p-5">
                         <div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-4">게시물 등록</h1>
+                            <h1 class="h4 text-gray-900 mb-4">게시글 등록</h1>
                         </div>
                         <form id="form1" action="/notice/register" method="post">
                             <div>
@@ -36,7 +36,7 @@
                             <div>
                                 <div class="form-group">
                                     <label for="content">내용</label>
-                                    <textarea name="content" class="form-control form-control-user" id="content" placeholder="content"></textarea>
+                                    <textarea name="content" class="form-control form-control-user"  id="content" placeholder="content"></textarea>
                                 </div>
                             </div>
 

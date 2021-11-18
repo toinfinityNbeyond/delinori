@@ -26,11 +26,11 @@
 
         <div class="card-body">
             <div class="form-group">
-                <label for="exampleInputEmail10">글번호</label>
+                <label for="exampleInputEmail10">번호</label>
                 <input type="text" name="nno" class="form-control" id="exampleInputEmail10" value="<c:out value="${noticeDTO.nno}"></c:out>" readonly>
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">글제목</label>
+                <label for="exampleInputEmail1">제목</label>
                 <input type="text" name="title" class="form-control" id="exampleInputEmail1" value="<c:out value="${noticeDTO.title}"></c:out>">
             </div>
             <div class="form-group">

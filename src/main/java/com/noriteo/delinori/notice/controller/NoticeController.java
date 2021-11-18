@@ -61,6 +61,9 @@ public class NoticeController {
 
         model.addAttribute("pageMaker", new PageMaker(page,size,total));   // 필요한거 전달
 
+        log.info("---------------------------------1");
+
+        log.info("---------------------------------1");
 
         //model.addAttribute("pageMaker", new PageMaker(pageRequestDTO.getPage();,size,total));  이런식으로 줄이는것도 가능
     }  // 페이지와 사이즈를 파라미터로 던진다.
